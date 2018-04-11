@@ -10,6 +10,7 @@ namespace SocketServer
 {
     public class AsyncService
     {
+        static Raktar raktar = new Raktar("Raktar", "Raktar utca 420", "xxXRaktar69Xxx");
         private IPAddress ipAddress;
         private int port;
         public AsyncService(int port)
@@ -21,7 +22,8 @@ namespace SocketServer
                 throw new Exception("No IPv4 address for server");
         }
         public async void Run()
-        {
+        {         
+
             TcpListener listener = new TcpListener(this.ipAddress, this.port);
             listener.Start();
             Console.Write("Test socket service is now running");
@@ -59,11 +61,10 @@ namespace SocketServer
                     if (requestStr != null)
                     {
                         CommObject request = serializer.Deserialize<CommObject>(requestStr);
-                        Console.WriteLine("Received service request: " + request);
-                        
+                        Console.WriteLine("Received service request: " + request);                       
 
                         CommObject response = Response(request);
-                        Console.WriteLine("Computed response is: " + response + "\n");
+                        //Console.WriteLine("Computed response is: " + response + "\n");
                         await writer.WriteLineAsync(serializer.Serialize(response));
                     }
                     else
@@ -85,6 +86,21 @@ namespace SocketServer
         }
         private static CommObject Response(CommObject request)
         {
+            CommObject response = new CommObject();
+            switch (request.Message)
+            {
+                case "szabadRaklaphelyekListazasa":
+                    response.lista = raktar.getSzabadRaklaphelyekTipusSzerint(request.hutott);
+                    break;
+                case "behozandoTermekRogzitese":
+                    raktar.behozandoTermekRogzitese(request.termekAdatok);
+                    break;
+                default:
+                    break;
+            }
+
+            return response;
+            /*
             string reqdata = request.Message;
             char cmd = reqdata[0];
 
@@ -107,7 +123,7 @@ namespace SocketServer
             }
             CommObject response = new CommObject(response_str + " --(Server)--");
             return response;          
-           
+           */
         }
 
         private static string Reverse(string s)
