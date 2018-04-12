@@ -11,6 +11,11 @@ public class Raklap
         return belsoVonalkod;
     }
 
+    public string toString()
+    {
+        return belsoVonalkod + " | " + raklaphelyAzonosito;
+    }
+
 	public Raklap(string _belsoVonalkod, string _raklaphelyAzonosito,
                     bool _epsegBe, bool _epsegKi, int _mozgatasSzama)
 	{

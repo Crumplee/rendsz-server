@@ -60,7 +60,6 @@ public class Raktar
                                         adatok.raklaphelyek);
         termekek.Add(ujTermek);
         raklaphelyLetrehozasa(adatok.raklaphelyek, ujTermek.getRaklapok());
-        Console.WriteLine("sikeruuuult");
     }
 
     public void raklaphelyLetrehozasa(List<string> _raklaphelyek, List<Raklap> raklapok)
@@ -69,5 +68,21 @@ public class Raktar
         {
             raklapHelyek.Find(hely => hely.getAzonosito() == _raklaphelyek[i]).setRaklapAzonosito(raklapok[i].getBelsoVonalkod());
         }
+    }
+
+    public CommObject getTermekLista()
+    {
+        CommObject toResponse = new CommObject();
+        foreach(Termek termek in termekek)
+        {
+            CommObject.termekAdatokStruct tmp = new CommObject.termekAdatokStruct(termek.getMegrendeloAzonosito(), termek.getTermekNev(),
+                termek.getKulsovonalkod(), termek.getTipus(), termek.getBeIdopont(), termek.getKiIdopont(), termek.getMennyiseg(), new List<string>());
+            foreach(Raklap raklap in termek.getRaklapok())
+            {
+                tmp.raklapAdatok.Add(raklap.toString());
+            }
+            toResponse.termekAdatokLista.Add(tmp);
+        }
+        return toResponse;
     }
 }

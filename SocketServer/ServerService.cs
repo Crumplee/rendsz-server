@@ -95,6 +95,9 @@ namespace SocketServer
                 case "behozandoTermekRogzitese":
                     raktar.behozandoTermekRogzitese(request.termekAdatok);
                     break;
+                case "termekekListazasa":
+                    response = raktar.getTermekLista();
+                    break;
                 default:
                     break;
             }
