@@ -11,6 +11,7 @@ namespace SocketServer
     public class AsyncService
     {
         static Raktar raktar = new Raktar("Raktar", "Raktar utca 420", "xxXRaktar69Xxx");
+        static Munkarendek munkarendek = new Munkarendek();
         private IPAddress ipAddress;
         private int port;
         public AsyncService(int port)
@@ -94,15 +95,27 @@ namespace SocketServer
                     break;
                 case "behozandoTermekRogzitese":
                     raktar.behozandoTermekRogzitese(request.termekAdatok);
+                    response.Message = "Rogzitve";
                     break;
                 case "termekekListazasa":
                     response = raktar.getTermekLista();
+                    break;
+                case "munkarendHozzaadas":
+                    Console.WriteLine(request.beosztasAdatok.datum);
+                    munkarendek.addMunkarend(request.beosztasAdatok);
+                    response.Message = "Hozzaadva";
+                    break;
+                case "munkarendLekerdezes":
+                    response = munkarendek.getMunkarendek();
                     break;
                 default:
                     break;
             }
 
             return response;
+
+
+
             /*
             string reqdata = request.Message;
             char cmd = reqdata[0];
