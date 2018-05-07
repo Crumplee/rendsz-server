@@ -41,4 +41,9 @@ public class Dolgozo
     public virtual void pempo() {
         Console.WriteLine("alma");
     }
+
+    public override string ToString()
+    {
+        return getNev();
+    }
 }

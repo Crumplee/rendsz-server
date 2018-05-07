@@ -32,11 +32,6 @@ public class Dolgozok
         dolgozok.Add(tmp);
     }
 
-    public void kiA()
-    {
-        Console.WriteLine("alma");
-    }
-
     public List<Dolgozo> getDolgozok()
     {
         return dolgozok;

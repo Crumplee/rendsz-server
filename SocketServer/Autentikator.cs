@@ -12,7 +12,6 @@ public class Autentikator
         Dolgozo user = null;
         Dolgozok dolgozok = Dolgozok.Instance();       
 
-        dolgozok.kiA();
         dolgozok.init();
 
         foreach (Dolgozo d in dolgozok.getDolgozok())

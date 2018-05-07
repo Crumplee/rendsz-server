@@ -98,14 +98,13 @@ namespace SocketServer
                     user = aut.autentikacio(request.bejelentkezesadatok.azonosito, request.bejelentkezesadatok.vonalkod);
                     if (user != null)
                     {
-                        response.Message = "bejelentkezes_sikeres";
+                        response.Message = user.getJogosultsag();
+                        Console.WriteLine(user);
                     }
                     else
                     {
-                        response.Message = "bejelentkezes_hiba";
+                        response.Message = "hiba";
                     }
-                    user.pempo();
-                    Console.WriteLine(user);
                     break;
                 case "szabadRaklaphelyekListazasa":
                     response.lista = raktar.getSzabadRaklaphelyekTipusSzerint(request.hutott);
@@ -116,8 +115,6 @@ namespace SocketServer
                     break;
                 case "termekekListazasa":
                     response = raktar.getTermekLista();
-                    user.pempo();
-                    Console.WriteLine(user);
                     break;
                 case "munkarendHozzaadas":
                     Console.WriteLine(request.beosztasAdatok.datum);
