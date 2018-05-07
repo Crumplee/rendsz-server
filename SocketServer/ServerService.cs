@@ -38,13 +38,14 @@ namespace SocketServer
                     Task t = Process(tcpClient);
                 }
                 catch (Exception ex)
-                {
+                { 
                     Console.WriteLine(ex.Message);
                 }
             }
         }
         private async Task Process(TcpClient tcpClient)
         {
+            Dolgozo user = null;
             string clientEndPoint = tcpClient.Client.RemoteEndPoint.ToString();
             Console.WriteLine("Received connection request from " + clientEndPoint);
             try
@@ -61,10 +62,11 @@ namespace SocketServer
                     string requestStr = await reader.ReadLineAsync();
                     if (requestStr != null)
                     {
+                        //Console.WriteLine(i);
                         CommObject request = serializer.Deserialize<CommObject>(requestStr);
                         Console.WriteLine("Received service request: " + request);                       
 
-                        CommObject response = Response(request);
+                        CommObject response = Response(request, ref user);
                         //Console.WriteLine("Computed response is: " + response + "\n");
                         await writer.WriteLineAsync(serializer.Serialize(response));
                     }
@@ -85,11 +87,17 @@ namespace SocketServer
                 Console.WriteLine("Connection closed, client: " + clientEndPoint);
             }
         }
-        private static CommObject Response(CommObject request)
+        private static CommObject Response(CommObject request, ref Dolgozo user)
         {
             CommObject response = new CommObject();
             switch (request.Message)
             {
+                case "bejelentkezes":
+                    user = new Adminisztrator("asd", "kek", "tyabiii", "fereg");
+                    user.pempo();
+                    response.Message = "asd";
+                    Console.WriteLine(user);
+                    break;
                 case "szabadRaklaphelyekListazasa":
                     response.lista = raktar.getSzabadRaklaphelyekTipusSzerint(request.hutott);
                     break;
@@ -99,6 +107,8 @@ namespace SocketServer
                     break;
                 case "termekekListazasa":
                     response = raktar.getTermekLista();
+                    user.pempo();
+                    Console.WriteLine(user);
                     break;
                 case "munkarendHozzaadas":
                     Console.WriteLine(request.beosztasAdatok.datum);
@@ -173,6 +183,11 @@ namespace SocketServer
                 m += line + "\n";
             }
             return m;
+        }
+
+        private static void autentikacioVeglegesitese()
+        {
+
         }
 
     }

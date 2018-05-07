@@ -43,14 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adminisztrator.cs" />
     <Compile Include="CommObject.cs" />
+    <Compile Include="Diszpecser.cs" />
+    <Compile Include="Dolgozo.cs" />
     <Compile Include="Munkarend.cs" />
     <Compile Include="Munkarendek.cs" />
+    <Compile Include="Muszakvezeto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Raklap.cs" />
     <Compile Include="Raklaphely.cs" />
     <Compile Include="Raktar.cs" />
+    <Compile Include="Raktaros.cs" />
     <Compile Include="ServerService.cs" />
     <Compile Include="Termek.cs" />
   </ItemGroup>
