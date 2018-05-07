@@ -84,7 +84,8 @@ namespace SocketServer
                 {                    
                     tcpClient.Close();
                 }
-                Console.WriteLine("Connection closed, client: " + clientEndPoint);
+                Console.WriteLine("Error connection closed, client: " + clientEndPoint);
+                //Console.WriteLine(ex.Message);
             }
         }
         private static CommObject Response(CommObject request, ref Dolgozo user)
@@ -93,9 +94,17 @@ namespace SocketServer
             switch (request.Message)
             {
                 case "bejelentkezes":
-                    user = new Adminisztrator("asd", "kek", "tyabiii", "fereg");
+                    Autentikator aut = new Autentikator();
+                    user = aut.autentikacio(request.bejelentkezesadatok.azonosito, request.bejelentkezesadatok.vonalkod);
+                    if (user != null)
+                    {
+                        response.Message = "bejelentkezes_sikeres";
+                    }
+                    else
+                    {
+                        response.Message = "bejelentkezes_hiba";
+                    }
                     user.pempo();
-                    response.Message = "asd";
                     Console.WriteLine(user);
                     break;
                 case "szabadRaklaphelyekListazasa":
@@ -123,33 +132,6 @@ namespace SocketServer
             }
 
             return response;
-
-
-
-            /*
-            string reqdata = request.Message;
-            char cmd = reqdata[0];
-
-            string data = reqdata.Substring(1, reqdata.Length - 1);
-            string response_str = "";
-            switch (cmd)
-            {
-                case '1':
-                    response_str = DateTime.Now.ToString();
-                    break;
-                case '2':
-                    response_str = Reverse(data);
-                    break;
-                case '3':
-                    response_str = ToUpPeR(data);
-                    break;
-                default:
-                    response_str = cmd + data;
-                    break;
-            }
-            CommObject response = new CommObject(response_str + " --(Server)--");
-            return response;          
-           */
         }
 
         private static string Reverse(string s)

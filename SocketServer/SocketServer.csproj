@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adminisztrator.cs" />
+    <Compile Include="Autentikator.cs" />
     <Compile Include="CommObject.cs" />
     <Compile Include="Diszpecser.cs" />
     <Compile Include="Dolgozo.cs" />
+    <Compile Include="Dolgozok.cs" />
     <Compile Include="Munkarend.cs" />
     <Compile Include="Munkarendek.cs" />
     <Compile Include="Muszakvezeto.cs" />

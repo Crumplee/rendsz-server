@@ -28,6 +28,16 @@ public class Dolgozo
 
     }
 
+    public string getJogosultsag()
+    {
+        return jogosultsag;
+    }
+
+    public string getNev()
+    {
+        return nev;
+    }
+
     public virtual void pempo() {
         Console.WriteLine("alma");
     }
