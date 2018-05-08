@@ -1,5 +1,6 @@
 ﻿using System;
-
+using Communication;
+using System.Collections.Generic;
 public class Dolgozo
 {
     protected string azonosito, vonalkod, nev, jogosultsag;
@@ -21,12 +22,7 @@ public class Dolgozo
     {
         return vonalkod;
     }
-
-    public void munkarendLekerdezes()
-    {
-        //hujuj
-
-    }
+    
 
     public string getJogosultsag()
     {
@@ -45,5 +41,38 @@ public class Dolgozo
     public override string ToString()
     {
         return getNev();
+    }
+
+    public virtual CommObject termekekListazasa()
+    {
+        return new CommObject();
+    }
+
+    public virtual CommObject getSzabadRaklaphelyekTipusSzerint(bool hutott)
+    {
+        return new CommObject();
+    }
+
+    public virtual void behozandoTermekRegisztralasa(CommObject.termekAdatokStruct adatok)
+    {
+
+    }
+
+    public virtual void munkarendHozzaadas(CommObject.beosztasAdatokStruct adatok)
+    {
+        
+    }
+
+    public CommObject munkarendLekerdezes()
+    {
+        CommObject toResponse = new CommObject();
+        List<Munkarend> munkarendek = SzerverKontroller.munkarendek.getMunkarendek();
+
+        foreach (Munkarend munkarend in munkarendek)
+        {
+            toResponse.beosztasokAdatokLista.Add(new CommObject.beosztasAdatokStruct(munkarend.getDolgozoAzonosito(), munkarend.getDatum(), munkarend.getMuszakSorszam()));
+        }
+
+        return toResponse;
     }
 }

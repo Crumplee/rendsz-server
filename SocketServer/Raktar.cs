@@ -48,18 +48,10 @@ public class Raktar
         return lista;
     }
 
-    public void behozandoTermekRogzitese(CommObject.termekAdatokStruct adatok)
+    public void behozandoTermekRogzitese(Termek ujTermek, List<string> raklaphelyek)
     {
-        Termek ujTermek = new Termek(adatok.megrendeloAzonosito,
-                                        adatok.termekNev,
-                                        adatok.kulsoVonalkod,
-                                        adatok.tipus,
-                                        adatok.beIdopont,
-                                        adatok.kiIdopont,
-                                        adatok.mennyiseg,
-                                        adatok.raklaphelyek);
         termekek.Add(ujTermek);
-        raklaphelyLetrehozasa(adatok.raklaphelyek, ujTermek.getRaklapok());
+        raklaphelyLetrehozasa(raklaphelyek, ujTermek.getRaklapok());
     }
 
     public void raklaphelyLetrehozasa(List<string> _raklaphelyek, List<Raklap> raklapok)
@@ -70,19 +62,8 @@ public class Raktar
         }
     }
 
-    public CommObject getTermekLista()
+    public List<Termek> getTermekLista()
     {
-        CommObject toResponse = new CommObject();
-        foreach(Termek termek in termekek)
-        {
-            CommObject.termekAdatokStruct tmp = new CommObject.termekAdatokStruct(termek.getMegrendeloAzonosito(), termek.getTermekNev(),
-                termek.getKulsovonalkod(), termek.getTipus(), termek.getBeIdopont(), termek.getKiIdopont(), termek.getMennyiseg(), new List<string>());
-            foreach(Raklap raklap in termek.getRaklapok())
-            {
-                tmp.raklapAdatok.Add(raklap.toString());
-            }
-            toResponse.termekAdatokLista.Add(tmp);
-        }
-        return toResponse;
+        return termekek;
     }
 }

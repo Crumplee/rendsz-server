@@ -10,19 +10,13 @@ public class Munkarendek
 
 	}
 
-    public void addMunkarend(CommObject.beosztasAdatokStruct adatok)
+    public void addMunkarend(Munkarend munkarend)
     {
-        munkarendek.Add(new Munkarend(adatok.dolgozoAzonosito, adatok.datum, adatok.muszakSorszam));
+        munkarendek.Add(munkarend);
     }
 
-    public CommObject getMunkarendek()
+    public List<Munkarend> getMunkarendek()
     {
-        CommObject toResponse = new CommObject();
-        foreach(Munkarend munkarend in munkarendek)
-        {
-            toResponse.beosztasokAdatokLista.Add(new CommObject.beosztasAdatokStruct(munkarend.getDolgozoAzonosito(),munkarend.getDatum(),munkarend.getMuszakSorszam()));
-        }
-
-        return toResponse;
+        return munkarendek;
     }
 }

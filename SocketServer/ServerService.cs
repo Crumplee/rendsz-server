@@ -10,10 +10,9 @@ namespace SocketServer
 {
     public class AsyncService
     {
-        static Raktar raktar = new Raktar("Raktar", "Raktar utca 420", "xxXRaktar69Xxx");
-        static Munkarendek munkarendek = new Munkarendek();
         private IPAddress ipAddress;
         private int port;
+
         public AsyncService(int port)
         {
             this.port = port;
@@ -43,6 +42,7 @@ namespace SocketServer
                 }
             }
         }
+
         private async Task Process(TcpClient tcpClient)
         {
             Dolgozo user = null;
@@ -64,9 +64,11 @@ namespace SocketServer
                     {
                         //Console.WriteLine(i);
                         CommObject request = serializer.Deserialize<CommObject>(requestStr);
-                        Console.WriteLine("Received service request: " + request);                       
+                        Console.WriteLine("Received service request: " + request);
 
-                        CommObject response = Response(request, ref user);
+                        SzerverKontroller szerverKontroller = SzerverKontroller.Instance();
+                        CommObject response = szerverKontroller.Valasz(request, ref user);
+
                         //Console.WriteLine("Computed response is: " + response + "\n");
                         await writer.WriteLineAsync(serializer.Serialize(response));
                     }
@@ -88,6 +90,7 @@ namespace SocketServer
                 //Console.WriteLine(ex.Message);
             }
         }
+        /*
         private static CommObject Response(CommObject request, ref Dolgozo user)
         {
             CommObject response = new CommObject();
@@ -106,7 +109,12 @@ namespace SocketServer
                         response.Message = "hiba";
                     }
                     break;
+                case "kijelentkezes":
+                    user = null;
+                    response.Message = "kijelentkezes_sikeres";
+                    break;
                 case "szabadRaklaphelyekListazasa":
+
                     response.lista = raktar.getSzabadRaklaphelyekTipusSzerint(request.hutott);
                     break;
                 case "behozandoTermekRogzitese":
@@ -114,6 +122,7 @@ namespace SocketServer
                     response.Message = "Rogzitve";
                     break;
                 case "termekekListazasa":
+
                     response = raktar.getTermekLista();
                     break;
                 case "munkarendHozzaadas":
@@ -129,8 +138,9 @@ namespace SocketServer
             }
 
             return response;
-        }
+        }*/
 
+        /*
         private static string Reverse(string s)
         {
             char[] charArray = s.ToCharArray();
@@ -162,12 +172,7 @@ namespace SocketServer
                 m += line + "\n";
             }
             return m;
-        }
-
-        private static void autentikacioVeglegesitese()
-        {
-
-        }
-
+        }*/
+        
     }
 }

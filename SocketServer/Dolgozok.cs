@@ -8,11 +8,10 @@ public class Dolgozok
     private static Dolgozok instance = new Dolgozok();
 
     public static Dolgozok Instance()
-    {
-        
+    {        
         if (instance == null)
         {
-            Console.WriteLine("létrehozzaa");
+            //Console.WriteLine("létrehozzaa");
             instance = new Dolgozok();
         }
         return instance;        
@@ -26,10 +25,15 @@ public class Dolgozok
 
     public void init()
     {
-        Dolgozo tmp = new Dolgozo("asd", "kek", "tyabiii", "adminisztrator");
+        Dolgozo tmp = new Dolgozo("admin", "123", "tyabiii", "adminisztrator");
         dolgozok.Add(tmp);
-        tmp = new Dolgozo("lol", "lul", "tsabii", "raktaros");
+        tmp = new Dolgozo("diszpecser", "123", "tsabii", "diszpecser");
         dolgozok.Add(tmp);
+        tmp = new Dolgozo("muszakv", "123", "foni", "muszakvezeto");
+        dolgozok.Add(tmp);
+        tmp = new Dolgozo("raktaros", "123", "belezogep", "raktaros");
+        dolgozok.Add(tmp);
+
     }
 
     public List<Dolgozo> getDolgozok()

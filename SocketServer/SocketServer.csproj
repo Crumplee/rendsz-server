@@ -59,6 +59,7 @@
     <Compile Include="Raktar.cs" />
     <Compile Include="Raktaros.cs" />
     <Compile Include="ServerService.cs" />
+    <Compile Include="SzerverKontroller.cs" />
     <Compile Include="Termek.cs" />
   </ItemGroup>
   <ItemGroup>

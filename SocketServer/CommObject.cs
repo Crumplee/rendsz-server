@@ -6,6 +6,16 @@ namespace Communication
     [Serializable]
     public class CommObject
     {
+        public string Message { get; set; }
+        public bool hutott;
+        public List<string> lista;
+        public bejelentkezesAdatok bejelentkezesadatok;
+        public List<termekAdatokStruct> termekAdatokLista = new List<termekAdatokStruct>();
+        public List<beosztasAdatokStruct> beosztasokAdatokLista = new List<beosztasAdatokStruct>();
+        public termekAdatokStruct termekAdatok;
+        public beosztasAdatokStruct beosztasAdatok;
+
+
         public struct bejelentkezesAdatok
         {
             public string azonosito, vonalkod;
@@ -15,13 +25,8 @@ namespace Communication
                 azonosito = _azonosito;
                 vonalkod = _vonalkod;
             }
-        }
+        }       
 
-        public bejelentkezesAdatok bejelentkezesadatok;
-
-        public string Message { get; set; }
-        public bool hutott;
-        public List<string> lista;
         public struct termekAdatokStruct
         {
             public string megrendeloAzonosito;
@@ -69,21 +74,13 @@ namespace Communication
             }
         }
 
-        public List<termekAdatokStruct> termekAdatokLista = new List<termekAdatokStruct>();
-        public List<beosztasAdatokStruct> beosztasokAdatokLista = new List<beosztasAdatokStruct>();
-        public termekAdatokStruct termekAdatok;
-        public beosztasAdatokStruct beosztasAdatok;
-
+        
         public CommObject() { }
         public CommObject(string msg)
         {
             this.Message = msg;
         }
-
-        public void setHutott(bool value)
-        {
-            hutott = value;
-        }
+        
 
         public override string ToString()
         {
