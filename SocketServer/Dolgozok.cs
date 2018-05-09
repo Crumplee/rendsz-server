@@ -45,4 +45,18 @@ public class Dolgozok
     {
         dolgozok.Add(d);
     }
+
+    public void deleteFelhasznalo(string azonosito)
+    {
+        Dolgozo torlendo = null;
+        foreach (Dolgozo d in dolgozok)
+        {
+            if (d.getAzonosito() == azonosito)
+            {
+                torlendo = d;
+                break;
+            }
+        }
+        dolgozok.Remove(torlendo);
+    }
 }

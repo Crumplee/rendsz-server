@@ -68,9 +68,12 @@ public class SzerverKontroller
                 user.addFelhasznalo(request.felhasznaloAdatok);
                 response.Message = "felhasznaloHozzaadva";
                 break;
+            case "felhasznalokListazasa":
+                response = user.getDolgozok();
+                break;
             case "felhasznaloTorlese":
-
-                //response
+                user.deleteFelhasznalo(request.felhasznaloAdatok.azonosito);
+                response.Message = "felhasznaloTorolve";
                 break;
             default:
                 break;

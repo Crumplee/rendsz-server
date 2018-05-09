@@ -81,7 +81,12 @@ public class Dolgozo
 
     }
 
-    public virtual void deleteFelhasznalo()
+    public virtual CommObject getDolgozok()
+    {
+        return new CommObject();
+    }
+
+    public virtual void deleteFelhasznalo(string azonosito)
     {
 
     }

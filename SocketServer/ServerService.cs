@@ -57,6 +57,8 @@ namespace SocketServer
                 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
 
+                
+
                 while (true)
                 {
                     string requestStr = await reader.ReadLineAsync();

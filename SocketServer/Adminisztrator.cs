@@ -20,18 +20,22 @@ public class Adminisztrator: Dolgozo
         Dolgozo ujDolgozo = new Dolgozo(ujFelhasznalo.azonosito, ujFelhasznalo.vonalkod, ujFelhasznalo.nev, ujFelhasznalo.jogosultsag);
         SzerverKontroller.dolgozok.addFelhasznalo(ujDolgozo);        
     }
-    /*
-    public override void deleteFelhasznalo()
+
+    public override CommObject getDolgozok()
     {
         CommObject toResponse = new CommObject();
-        
-        
-        foreach (Dolgozo d in SzerverKontroller.dolgozok.getDolgozok())
+        List<Dolgozo> dolgozok = SzerverKontroller.dolgozok.getDolgozok();
+
+        foreach (Dolgozo d in dolgozok)
         {
-            users.Add(d.getNev());
+            toResponse.felhasznalokLista.Add(new CommObject.felhasznaloAdatokStruct(d.getAzonosito(), "", d.getNev(), d.getJogosultsag()));
         }
-        toResponse.lista = users;
 
+        return toResponse;
+    }
 
-    }*/
+    public override void deleteFelhasznalo(string azonosito)
+    {
+        SzerverKontroller.dolgozok.deleteFelhasznalo(azonosito);
+    }
 }

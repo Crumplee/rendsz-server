@@ -53,21 +53,22 @@ dolgozok felhasznalomodositasveglegesitese
 szerver oldali siker kuldese
 
 (felhasznalo torlese)
-kliensoldalikontroller deleteFelhasznalo()
-felhasznalok kezelése deleteFelhasznalo()
-kliens oldali kuldes
+--változás
+kliensoldalikontroller deleteFelhasznalo() -> getFelhasznalok()
+felhasznalok kezelése deleteFelhasznalo() -> getelhasznalok()
+kliens oldali kuldes -- felhasznalokListazasa parancs
   szerver oldali válasz
-  adminisztrátor deleteFelhasznalo()
+  adminisztrátor deleteFelhasznalo() -> getDolgozok()
   dolgozok getdolgozok()
-  szerver oldali kuldes (dolgozok lista)
+  szerver oldali kuldes (dolgozok lista) -- felahsznaloAdatokStruct (jelszo/vonalkod nincs elküldve)
 felhasznalokezelese deletefelhasznalonál vagyunk újra
 kiir beker sorszámot
 megerősítést kérünk
-felhasznaloTorlesVeglegesitese
-kliens oldali kuldes
+felhasznaloTorlesVeglegesitese -- itt ez vagy csak a deleteFelhasznalo() es ez meg nem kell
+kliens oldali kuldes -- felhasznaloTorlese parancs + azonosító felhasznaloAdatok-ban
   szerver oldali valasz
-  adminisztrátor felhasznalotorlesveglegesitese
-  dolgozok felhasznalotorlesveglegesitese
+  adminisztrátor felhasznalotorlesveglegesitese -> deleteFelhasznalo()
+  dolgozok felhasznalotorlesveglegesitese -- vagy deleteDolgozo()
   szerver oldali kuldes sikerről
 
 (terminal hozzarendelese foglalashoz) (terminál beosztás csinálása)
