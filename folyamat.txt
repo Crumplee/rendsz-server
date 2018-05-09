@@ -7,6 +7,7 @@ szabadraklapheyeklistazasa modellbe
 --terminálbeosztás - raklap átnézése (raklap helyett termékre hivatkozik, azt tárol)
 -- diszpécser getterminálbeosztások(típus) "datum" "terminal" "datumEsHutottseg"
 raktar.getTerminal(azonosito)
+raktar.getTermek(azonosito)
 
 xxx
 (bejelentkezés)
@@ -83,7 +84,7 @@ kliens oldali kuldes -- felhasznaloTorlese parancs + azonosító felhasznaloAdat
   dolgozok felhasznalotorlesveglegesitese -- vagy deleteDolgozo()
   szerver oldali kuldes sikerről -- felhasznaloTorolve
 
-x
+xxx
 (terminal hozzarendelese foglalashoz) (terminál beosztás csinálása)
 kliensoldalikontroller terminalbeosztasletrehozasa
 terminalbeosztaskezeles terminalbeosztasletrehozasa konstruktorban hutott meg datum meg termék paraméterekkel
@@ -93,6 +94,7 @@ kliensoldalikontroller kuldes  -- parancs terminalBeosztasTermekhez, (datum, ido
   getterminalbeosztasok
   szerveroldali kontroller kuldessel válasz siker esetén terminálazonosito hiba esetén hibaüzenet
 
+xxx
 (terminál beosztás lekérdezése)
 kliensoldalikontroller terminalbeosztaslekerdezes
 terminalbeosztaskezeles
@@ -113,6 +115,7 @@ szerver fogad
 terminalbeosztasok getterminalbeosztasokterminalszerint
 szerver visszaküldi a listát
 
+x
 (termekek szurt listazasa)
 kliensoldal termekekszurtlistazasa()
 termekeklistazasa termekekszurtlistazasa()

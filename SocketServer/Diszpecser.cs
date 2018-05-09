@@ -72,14 +72,14 @@ public class Diszpecser: Dolgozo
         switch (terminalBeosztasLekerdezes.tipus)
         {
             case "datum":
-
+                terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokDatumSzerint(DateTime.Parse(terminalBeosztasLekerdezes.idopont));
                 break;
             case "terminal":
-
+                terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokTerminalSzerint(terminalBeosztasLekerdezes.terminal);
                 break;
             case "datumEsHutottseg":
                 terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokDatumEsTipusSzerint(DateTime.Parse(terminalBeosztasLekerdezes.idopont),
-                                                                                                            terminalBeosztasLekerdezes.hutott);
+                                                                                                                    terminalBeosztasLekerdezes.hutott);
                 break;
             default:
                 break;
