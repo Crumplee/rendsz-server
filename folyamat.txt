@@ -4,7 +4,9 @@ mindenhol a szerver fogadás és végrehajtás között meghívódnak a megfelel
 terméknél egyedi a külső vonalkód
 SzerverOldaliKontroller -> SzerverKontroller
 szabadraklapheyeklistazasa modellbe
+--terminálbeosztás - raklap átnézése (raklap helyett termékre hivatkozik, azt tárol)
 
+xxx
 (bejelentkezés)
 kliensoldalikontroller bejelentkezes
 adatok bekérése
@@ -14,6 +16,7 @@ dolgozok autentikacio -> getdolgozo
 autentikator autentikacioja összehasonlítja a vonalkodot, majd szerver oldali kontroller autentikacio veglegesitese, ami elmenti vhogy sockethez
 válaszban a felhasznalo típusa megy kliens oldala
 
+xxx
 (kijelentkezés)
 kliensoldali kontroller kijelentkezes
 kliensoldali kuldes
@@ -30,6 +33,7 @@ Adminisztrator addFelhasznalo
 Dolgozók addfelhasznalo
 szerveroldalikontroller valaszban kuldessel  visszajelez
 
+xxx
 (modifyFelhasznalo) -- csak név + jogosultságot lehet
 kliensoldalikontroller: modifyFelhasznalo HELYETT getFelhasznalok()
 FelhasznaloKezelese: modifyFelhasznalo HELYETT getFelhasznalok()
@@ -57,6 +61,7 @@ kliensoldali kuldes -- felhasznaloModositasa parancs, felhasznaloAdatok-ban (min
   dolgozok felhasznalomodositasveglegesitese HELYETT modifyFelhasznalo()
   szerver oldali siker kuldese -- felhasznaloModositva
 
+xxx
 (felhasznalo torlese)
 --változás
 kliensoldalikontroller deleteFelhasznalo() -> getFelhasznalok()
@@ -76,14 +81,15 @@ kliens oldali kuldes -- felhasznaloTorlese parancs + azonosító felhasznaloAdat
   dolgozok felhasznalotorlesveglegesitese -- vagy deleteDolgozo()
   szerver oldali kuldes sikerről -- felhasznaloTorolve
 
+x
 (terminal hozzarendelese foglalashoz) (terminál beosztás csinálása)
 kliensoldalikontroller terminalbeosztasletrehozasa
 terminalbeosztaskezeles terminalbeosztasletrehozasa konstruktorban hutott meg datum meg termék paraméterekkel
-kliensoldalikontroller kuldes
-szerveroldali valasz
-terminalbeosztasok terminalbeosztasletrehozasa
-getterminalbeosztasok
-szerveroldali kontroller kuldessel válasz siker esetén terminálazonosito hiba esetén hibaüzenet
+kliensoldalikontroller kuldes  -- parancs terminalBeosztas
+  szerveroldali valasz
+  terminalbeosztasok terminalbeosztasletrehozasa
+  getterminalbeosztasok
+  szerveroldali kontroller kuldessel válasz siker esetén terminálazonosito hiba esetén hibaüzenet
 
 (terminál beosztás lekérdezése)
 kliensoldalikontroller terminalbeosztaslekerdezes

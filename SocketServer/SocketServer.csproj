@@ -61,6 +61,9 @@
     <Compile Include="ServerService.cs" />
     <Compile Include="SzerverKontroller.cs" />
     <Compile Include="Termek.cs" />
+    <Compile Include="Terminal.cs" />
+    <Compile Include="TerminalBeosztas.cs" />
+    <Compile Include="TerminalBeosztasok.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

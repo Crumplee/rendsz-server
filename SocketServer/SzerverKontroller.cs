@@ -79,6 +79,9 @@ public class SzerverKontroller
                 user.modifyFelhasznalo(request.felhasznaloAdatok);
                 response.Message = "felhasznaloModositva";
                 break;
+            case "terminalBeosztasTermekhez":
+
+                break;
             default:
                 break;
         }

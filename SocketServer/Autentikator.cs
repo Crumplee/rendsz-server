@@ -12,7 +12,7 @@ public class Autentikator
         Dolgozo user = null;
         //Dolgozok dolgozok = Dolgozok.Instance();       
 
-        SzerverKontroller.dolgozok.init();
+        
 
         foreach (Dolgozo d in SzerverKontroller.dolgozok.getDolgozok())
         {

@@ -1,0 +1,24 @@
+﻿using System;
+
+public class TerminalBeosztas
+{
+    DateTime idopont;
+    int idotartamEgyseg; //30 perc
+    Termek termek;
+    string irany;
+    Terminal terminal;
+
+	public TerminalBeosztas(DateTime _idopont, int _idotartamEgyseg, Termek _termek, string _irany, Terminal _terminal)
+	{
+        idopont = _idopont;
+        idotartamEgyseg = _idotartamEgyseg;
+        termek = _termek;
+        irany = _irany;
+        terminal = _terminal;
+	}
+
+    public Termek getTermek()
+    {
+        return termek;
+    }
+}

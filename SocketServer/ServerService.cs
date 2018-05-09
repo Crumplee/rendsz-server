@@ -22,8 +22,8 @@ namespace SocketServer
                 throw new Exception("No IPv4 address for server");
         }
         public async void Run()
-        {         
-
+        {
+            SzerverKontroller.dolgozok.init();
             TcpListener listener = new TcpListener(this.ipAddress, this.port);
             listener.Start();
             Console.Write("Test socket service is now running");
