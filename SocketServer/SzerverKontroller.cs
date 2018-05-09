@@ -8,6 +8,7 @@ public class SzerverKontroller
     public static Raktar raktar = new Raktar("Raktar", "Raktar utca 420", "xxXRaktar69Xxx");
     public static Munkarendek munkarendek = new Munkarendek();
     public static Dolgozok dolgozok = new Dolgozok();
+    public static TerminalBeosztasok terminalBeosztasok = new TerminalBeosztasok();
 
     private SzerverKontroller()
 	{
@@ -80,7 +81,12 @@ public class SzerverKontroller
                 response.Message = "felhasznaloModositva";
                 break;
             case "terminalBeosztasTermekhez":
-
+                user.terminalBeosztasLetrehozasa(request.terminalBeosztasAdatok);
+                response.Message = "terminalBeosztasLetrehozva";
+                break;
+            case "terminalBeosztasLekerdezes":
+                response = user.getTerminalBeosztasok(request.terminalBeosztasLekerdezes);
+                response.Message = "terminalBeosztas_" + request.terminalBeosztasLekerdezes.tipus;
                 break;
             default:
                 break;

@@ -96,8 +96,13 @@ public class Dolgozo
 
     }
 
-    public virtual void terminalBeosztasLetrehozasa(CommObject.termekAdatokStruct terminalBeosztas)
+    public virtual void terminalBeosztasLetrehozasa(CommObject.terminalBeosztasAdatokStruct terminalBeosztas)
     {
 
+    }
+
+    public virtual CommObject getTerminalBeosztasok(CommObject.terminalBeosztasLekerdezesStruct terminalBeosztasLekerdezes)
+    {
+        return new CommObject();
     }
 }

@@ -8,6 +8,7 @@ public class Raktar
     string nev, cim, azonosito;
     List<Termek> termekek = new List<Termek>();
     List<Raklaphely> raklapHelyek = new List<Raklaphely>();
+    List<Terminal> terminalok = new List<Terminal>();
     
 
 	public Raktar(string _nev, string _cim, string _azonosito)
@@ -28,6 +29,18 @@ public class Raktar
         }
 
         raklaphelySzam = raklapHelyek.Count;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            string azon = "HT" + (i + 1);
+            terminalok.Add(new Terminal(azon, true));
+        }
+
+        for (int i = 0; i < 2; ++i)
+        {
+            string azon = "NHT" + (i + 1);
+            terminalok.Add(new Terminal(azon, false));
+        }
     }
 
     public List<string> getSzabadRaklaphelyekTipusSzerint(bool hutott)
@@ -65,5 +78,30 @@ public class Raktar
     public List<Termek> getTermekLista()
     {
         return termekek;
+    }
+
+    public Terminal getTerminal(string azonosito)
+    {
+        foreach (Terminal t in terminalok)
+        {
+            if (t.getAzonosito() == azonosito)
+            {
+                return t;
+            }
+        }
+
+        return null;
+    }
+
+    public Termek getTermek(string kulsoVonalkod)
+    {
+        foreach (Termek t in termekek)
+        {
+            if (t.getKulsovonalkod() == azonosito)
+            {
+                return t;
+            }
+        }
+        return null;
     }
 }

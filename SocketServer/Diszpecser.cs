@@ -49,8 +49,54 @@ public class Diszpecser: Dolgozo
         SzerverKontroller.raktar.behozandoTermekRogzitese(ujTermek, adatok.raklaphelyek);
     }
 
-    public override void terminalBeosztasLetrehozasa(CommObject.termekAdatokStruct terminalBeosztas)
+    public override void terminalBeosztasLetrehozasa(CommObject.terminalBeosztasAdatokStruct terminalBeosztas)
     {
+        Terminal terminal = SzerverKontroller.raktar.getTerminal(terminalBeosztas.terminalAzonosito);
+        Termek termek = SzerverKontroller.raktar.getTermek(terminalBeosztas.termekAzonosito);
 
+        TerminalBeosztas tb = new TerminalBeosztas(DateTime.Parse(terminalBeosztas.idopont),
+                                                    terminalBeosztas.idotartamEgyseg,
+                                                    termek,
+                                                    terminalBeosztas.irany,
+                                                    terminal
+            );
+
+        SzerverKontroller.terminalBeosztasok.terminalBeosztasLetrehozasa(tb);
+    }
+
+    public override CommObject getTerminalBeosztasok(CommObject.terminalBeosztasLekerdezesStruct terminalBeosztasLekerdezes)
+    {
+        CommObject toResponse = new CommObject();
+        List<TerminalBeosztas> terminalbeosztasok = new List<TerminalBeosztas>();
+
+        switch (terminalBeosztasLekerdezes.tipus)
+        {
+            case "datum":
+
+                break;
+            case "terminal":
+
+                break;
+            case "datumEsHutottseg":
+                terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokDatumEsTipusSzerint(DateTime.Parse(terminalBeosztasLekerdezes.idopont),
+                                                                                                            terminalBeosztasLekerdezes.hutott);
+                break;
+            default:
+                break;
+        }
+
+
+        foreach (TerminalBeosztas tb in terminalbeosztasok)
+        {
+            toResponse.terminalBeosztasAdatokLista.Add(new CommObject.terminalBeosztasAdatokStruct( tb.getIdopont().ToString(),
+                                                                                                    tb.getIdotartamEgyseg(),
+                                                                                                    tb.getTerminal().getHutott(),
+                                                                                                    tb.getIrany(),
+                                                                                                    tb.getTermek().getKulsovonalkod(),
+                                                                                                    tb.getTerminal().getAzonosito()
+            ));
+        }
+
+        return toResponse;
     }
 }

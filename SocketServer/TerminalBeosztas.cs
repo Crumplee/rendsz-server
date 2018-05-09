@@ -21,4 +21,24 @@ public class TerminalBeosztas
     {
         return termek;
     }
+
+    public DateTime getIdopont()
+    {
+        return idopont;
+    }
+
+    public Terminal getTerminal()
+    {
+        return terminal;
+    }
+
+    public int getIdotartamEgyseg()
+    {
+        return idotartamEgyseg;
+    }
+
+    public string getIrany()
+    {
+        return irany;
+    }
 }

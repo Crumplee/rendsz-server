@@ -23,7 +23,10 @@ namespace SocketServer
         }
         public async void Run()
         {
+            //init, töröld majd
             SzerverKontroller.dolgozok.init();
+            //SzerverKontroller.terminalBeosztasok.
+
             TcpListener listener = new TcpListener(this.ipAddress, this.port);
             listener.Start();
             Console.Write("Test socket service is now running");

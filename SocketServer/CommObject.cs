@@ -39,14 +39,14 @@ namespace Communication
 
             public struct terminalBeosztasAdatokStruct
         {
-            public DateTime idopont;
+            public string idopont;
             public int idotartamEgyseg;
             public bool hutott;
             public string irany;
             public string termekAzonosito;
             public string terminalAzonosito;
 
-            public terminalBeosztasAdatokStruct(DateTime _idopont, int _idotartamEgyseg, bool _hutott, string _irany, string _termekAzonosito, string _terminalAzonosito)
+            public terminalBeosztasAdatokStruct(string _idopont, int _idotartamEgyseg, bool _hutott, string _irany, string _termekAzonosito, string _terminalAzonosito)
             {
                 idopont = _idopont;
                 idotartamEgyseg = _idotartamEgyseg;

@@ -5,6 +5,8 @@ terméknél egyedi a külső vonalkód
 SzerverOldaliKontroller -> SzerverKontroller
 szabadraklapheyeklistazasa modellbe
 --terminálbeosztás - raklap átnézése (raklap helyett termékre hivatkozik, azt tárol)
+-- diszpécser getterminálbeosztások(típus) "datum" "terminal" "datumEsHutottseg"
+raktar.getTerminal(azonosito)
 
 xxx
 (bejelentkezés)
@@ -87,7 +89,7 @@ kliensoldalikontroller terminalbeosztasletrehozasa
 terminalbeosztaskezeles terminalbeosztasletrehozasa konstruktorban hutott meg datum meg termék paraméterekkel
 kliensoldalikontroller kuldes  -- parancs terminalBeosztasTermekhez, (datum, idotartamegyseg, hutott, irany (ki-be), termek (struct))
   szerveroldali valasz
-  terminalbeosztasok terminalbeosztasletrehozasa -- szerver kiválaszt egy jó terminált !!!hibakezelés
+  terminalbeosztasok terminalbeosztasletrehozasa --
   getterminalbeosztasok
   szerveroldali kontroller kuldessel válasz siker esetén terminálazonosito hiba esetén hibaüzenet
 
@@ -147,6 +149,3 @@ megerősítést kérünk
 termekkivitelveglegesítése
 adatok mennek szerverre
 műszakvezető termekkivitelvéglegesítése ->szerver kontroller termekkivitelvéglegesítése -> raktar termekkivitelvéglegesítése
- 
-
-
