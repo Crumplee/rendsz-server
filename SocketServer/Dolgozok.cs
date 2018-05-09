@@ -59,4 +59,10 @@ public class Dolgozok
         }
         dolgozok.Remove(torlendo);
     }
+
+    public void modifyFelhasznalo(Dolgozo dolgozo)
+    {
+        deleteFelhasznalo(dolgozo.getAzonosito());
+        addFelhasznalo(dolgozo);
+    }
 }

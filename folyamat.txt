@@ -30,27 +30,32 @@ Adminisztrator addFelhasznalo
 Dolgozók addfelhasznalo
 szerveroldalikontroller valaszban kuldessel  visszajelez
 
-(modifyFelhasznalo)
-kliensoldalikontroller: modifyFelhasznalo
-FelhasznaloKezelese: modifyFelhasznalo
+(modifyFelhasznalo) -- csak név + jogosultságot lehet
+kliensoldalikontroller: modifyFelhasznalo HELYETT getFelhasznalok()
+FelhasznaloKezelese: modifyFelhasznalo HELYETT getFelhasznalok()
 Kliensoldalikonrtoller kuldes
-szerveroldali... valasz
-adminisztrator modifyFelhasznalo
-dolgozok getDolgozok
-szerveroldali kontroller kuldes (listát visszaküldjük)
-felhasznalokezelese modifyfelhasznalon belül felhasznalointerfesz kiir bekerrel bekérjük a sorszámot. azt küldjük kliensoldalikontroller kuldesevel
-szerver oldali valasz
-adminisztrator getFelhasznalo -> dolgozok getfelhasznalo
-szerver oldali kuldes
+  szerveroldali... valasz
+  adminisztrator modifyFelhasznalo
+  dolgozok getDolgozok
+  szerveroldali kontroller kuldes (listát visszaküldjük)
+felhasznalokezelese modifyfelhasznalon belül felhasznalointerfesz kiir bekerrel bekérjük a sorszámot. 
+
+--ez nem kell mert minden adat ott van csak ki kell választani mit akarnk módosítani
+azt küldjük kliensoldalikontroller kuldesevel
+  szerver oldali valasz
+  adminisztrator getFelhasznalo -> dolgozok getfelhasznalo
+  szerver oldali kuldes
 visszatértünk a felhasznalokezelese modifyFelhasznalo eljáráshoz
+--innentől megint kell
+
 kiir bekérrel az adatokat
-aztán felhasznalokezelese felhasznalomodositasveglege..
+aztán felhasznalokezelese felhasznalomodositasveglege.. HELYETT modifyFelhasznalo() vagy amit akarsz :D
 megerősítést kérünk
-kliensoldali kuldes
-szerver oldali valasz
-adminisztrator felhasznalomodositasvegleg
-dolgozok felhasznalomodositasveglegesitese
-szerver oldali siker kuldese
+kliensoldali kuldes -- felhasznaloModositasa parancs, felhasznaloAdatok-ban (minden adatot)
+  szerver oldali valasz
+  adminisztrator felhasznalomodositasvegleg HELYETT modifyFelhasznalo()
+  dolgozok felhasznalomodositasveglegesitese HELYETT modifyFelhasznalo()
+  szerver oldali siker kuldese -- felhasznaloModositva
 
 (felhasznalo torlese)
 --változás
@@ -69,7 +74,7 @@ kliens oldali kuldes -- felhasznaloTorlese parancs + azonosító felhasznaloAdat
   szerver oldali valasz
   adminisztrátor felhasznalotorlesveglegesitese -> deleteFelhasznalo()
   dolgozok felhasznalotorlesveglegesitese -- vagy deleteDolgozo()
-  szerver oldali kuldes sikerről
+  szerver oldali kuldes sikerről -- felhasznaloTorolve
 
 (terminal hozzarendelese foglalashoz) (terminál beosztás csinálása)
 kliensoldalikontroller terminalbeosztasletrehozasa

@@ -90,4 +90,9 @@ public class Dolgozo
     {
 
     }
+
+    public virtual void modifyFelhasznalo(CommObject.felhasznaloAdatokStruct felhasznalo)
+    {
+
+    }
 }

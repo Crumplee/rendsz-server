@@ -75,6 +75,10 @@ public class SzerverKontroller
                 user.deleteFelhasznalo(request.felhasznaloAdatok.azonosito);
                 response.Message = "felhasznaloTorolve";
                 break;
+            case "felhasznaloModositasa":
+                user.modifyFelhasznalo(request.felhasznaloAdatok);
+                response.Message = "felhasznaloModositva";
+                break;
             default:
                 break;
         }

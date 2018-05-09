@@ -18,7 +18,8 @@ public class Adminisztrator: Dolgozo
     public override void addFelhasznalo(CommObject.felhasznaloAdatokStruct ujFelhasznalo)
     {
         Dolgozo ujDolgozo = new Dolgozo(ujFelhasznalo.azonosito, ujFelhasznalo.vonalkod, ujFelhasznalo.nev, ujFelhasznalo.jogosultsag);
-        SzerverKontroller.dolgozok.addFelhasznalo(ujDolgozo);        
+        SzerverKontroller.dolgozok.addFelhasznalo(ujDolgozo);
+        
     }
 
     public override CommObject getDolgozok()
@@ -38,4 +39,11 @@ public class Adminisztrator: Dolgozo
     {
         SzerverKontroller.dolgozok.deleteFelhasznalo(azonosito);
     }
+
+    public override void modifyFelhasznalo(CommObject.felhasznaloAdatokStruct felhasznalo)
+    {
+        Dolgozo dolgozo = new Dolgozo(felhasznalo.azonosito, felhasznalo.vonalkod, felhasznalo.nev, felhasznalo.jogosultsag);
+        SzerverKontroller.dolgozok.modifyFelhasznalo(dolgozo);
+    }
+
 }
