@@ -1,0 +1,140 @@
+﻿
+mindenhol a szerver fogadás és végrehajtás között meghívódnak a megfelelő dolgozók azonos függvényei
+
+terméknél egyedi a külső vonalkód
+SzerverOldaliKontroller -> SzerverKontroller
+szabadraklapheyeklistazasa modellbe
+
+(bejelentkezés)
+kliensoldalikontroller bejelentkezes
+adatok bekérése
+kliensoldali kuldes
+szerver oldali valasz -> autentikato autentikacio
+dolgozok autentikacio -> getdolgozo
+autentikator autentikacioja összehasonlítja a vonalkodot, majd szerver oldali kontroller autentikacio veglegesitese, ami elmenti vhogy sockethez
+válaszban a felhasznalo típusa megy kliens oldala
+
+(kijelentkezés)
+kliensoldali kontroller kijelentkezes
+kliensoldali kuldes
+szerver oldali valasz -> kontroller kiveszi socketből
+válasz kliensnek
+
+jogosultságok kiosztása: (addfelhasznalo)
+kliensoldalikontroller: addFelhasznalo
+FelhasznaloKezelese: addFelhasznalo
+FelhasznaloiInterfesz kiir beker adatoakt
+Kliensoldalikontroller kuldes
+szerveroldalikontroller valasz
+Adminisztrator addFelhasznalo
+Dolgozók addfelhasznalo
+szerveroldalikontroller valaszban kuldessel  visszajelez
+
+(modifyFelhasznalo)
+kliensoldalikontroller: modifyFelhasznalo
+FelhasznaloKezelese: modifyFelhasznalo
+Kliensoldalikonrtoller kuldes
+szerveroldali... valasz
+adminisztrator modifyFelhasznalo
+dolgozok getDolgozok
+szerveroldali kontroller kuldes (listát visszaküldjük)
+felhasznalokezelese modifyfelhasznalon belül felhasznalointerfesz kiir bekerrel bekérjük a sorszámot. azt küldjük kliensoldalikontroller kuldesevel
+szerver oldali valasz
+adminisztrator getFelhasznalo -> dolgozok getfelhasznalo
+szerver oldali kuldes
+visszatértünk a felhasznalokezelese modifyFelhasznalo eljáráshoz
+kiir bekérrel az adatokat
+aztán felhasznalokezelese felhasznalomodositasveglege..
+megerősítést kérünk
+kliensoldali kuldes
+szerver oldali valasz
+adminisztrator felhasznalomodositasvegleg
+dolgozok felhasznalomodositasveglegesitese
+szerver oldali siker kuldese
+
+(felhasznalo torlese)
+kliensoldalikontroller deleteFelhasznalo()
+felhasznalok kezelése deleteFelhasznalo()
+kliens oldali kuldes
+  szerver oldali válasz
+  adminisztrátor deleteFelhasznalo()
+  dolgozok getdolgozok()
+  szerver oldali kuldes (dolgozok lista)
+felhasznalokezelese deletefelhasznalonál vagyunk újra
+kiir beker sorszámot
+megerősítést kérünk
+felhasznaloTorlesVeglegesitese
+kliens oldali kuldes
+  szerver oldali valasz
+  adminisztrátor felhasznalotorlesveglegesitese
+  dolgozok felhasznalotorlesveglegesitese
+  szerver oldali kuldes sikerről
+
+(terminal hozzarendelese foglalashoz) (terminál beosztás csinálása)
+kliensoldalikontroller terminalbeosztasletrehozasa
+terminalbeosztaskezeles terminalbeosztasletrehozasa konstruktorban hutott meg datum meg termék paraméterekkel
+kliensoldalikontroller kuldes
+szerveroldali valasz
+terminalbeosztasok terminalbeosztasletrehozasa
+getterminalbeosztasok
+szerveroldali kontroller kuldessel válasz siker esetén terminálazonosito hiba esetén hibaüzenet
+
+(terminál beosztás lekérdezése)
+kliensoldalikontroller terminalbeosztaslekerdezes
+terminalbeosztaskezeles
+terminalbeosztaslekerdezes
+bekerjuk h datum vagy terminal szerint
+ha datum szerint,
+terminalbeosztaslekerdezesdatumszerint
+datum bekérése
+kliensoldalikontroller küld
+szerver fogad
+terminalbeosztasok getterminalbeosztasokdatumszerint
+szerver visszaküldi a listát
+ha terminal szerint kerjuk
+terminalbeosztaslekerdezesterminalszerint
+bekerjuk a terminal azonositot
+kliensoldal küld
+szerver fogad
+terminalbeosztasok getterminalbeosztasokterminalszerint
+szerver visszaküldi a listát
+
+(termekek szurt listazasa)
+kliensoldal termekekszurtlistazasa()
+termekeklistazasa termekekszurtlistazasa()
+bekérjük a szűrőket végjelig
+kliens küld
+szerver fogad
+raktar gettermeklista(szurok)
+szerver visszaküldi
+
+(termék behozatal)
+kliensoldali termekbehozatal
+termekmozgatas termekbehozatal
+bekérjük termék azonosítót meg dátumot meg terminálazonosítót
+ezeket küldjük
+szerver fogad műszakvezető termekbehozatal
+terminalbeosztasok getTerminalBeosztas ->getTermek ->getRaklapok
+visszamegy kliensre a raklapazonosítólista + külsővonalkód
+kliensen mindegyik raklapra megnézzük hogy bejött-e és hogy milyen állapotban
+termekbehozatalveglegesites
+kliens küld
+....
+raktar termekbehozatalveglegesitese
+termek termek....
+
+(termek kivitele)
+kliensoldali termek kivitel
+termekmozgatas termekkivitel
+bekérjük termék azonosítót meg dátumot meg terminálazonosítót
+ezeket küldjük
+szerver fogad műszakvezető termekkivitel
+terminalbeosztasok getTerminalBeosztas ->getTermek ->getRaklapok
+megy vissza klienshez
+megerősítést kérünk
+termekkivitelveglegesítése
+adatok mennek szerverre
+műszakvezető termekkivitelvéglegesítése ->szerver kontroller termekkivitelvéglegesítése -> raktar termekkivitelvéglegesítése
+ 
+
+
