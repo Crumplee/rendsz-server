@@ -18,7 +18,7 @@ public class Diszpecser: Dolgozo
         foreach (Termek termek in termekek)
         {
             CommObject.termekAdatokStruct tmp = new CommObject.termekAdatokStruct(termek.getMegrendeloAzonosito(), termek.getTermekNev(),
-                termek.getKulsovonalkod(), termek.getTipus(), termek.getBeIdopont(), termek.getKiIdopont(), termek.getMennyiseg(), new List<string>());
+                termek.getKulsovonalkod(), termek.getTipus(), termek.getBeIdopont().ToString(), termek.getKiIdopont().ToString(), termek.getMennyiseg(), new List<string>());
             foreach (Raklap raklap in termek.getRaklapok())
             {
                 tmp.raklapAdatok.Add(raklap.toString());
@@ -41,11 +41,16 @@ public class Diszpecser: Dolgozo
                                         adatok.termekNev,
                                         adatok.kulsoVonalkod,
                                         adatok.tipus,
-                                        adatok.beIdopont,
-                                        adatok.kiIdopont,
+                                        DateTime.Parse(adatok.beIdopont),
+                                        DateTime.Parse(adatok.kiIdopont),
                                         adatok.mennyiseg,
                                         adatok.raklaphelyek);
 
         SzerverKontroller.raktar.behozandoTermekRogzitese(ujTermek, adatok.raklaphelyek);
+    }
+
+    public override void terminalBeosztasLetrehozasa(CommObject.termekAdatokStruct terminalBeosztas)
+    {
+
     }
 }

@@ -85,9 +85,9 @@ x
 (terminal hozzarendelese foglalashoz) (terminál beosztás csinálása)
 kliensoldalikontroller terminalbeosztasletrehozasa
 terminalbeosztaskezeles terminalbeosztasletrehozasa konstruktorban hutott meg datum meg termék paraméterekkel
-kliensoldalikontroller kuldes  -- parancs terminalBeosztas
+kliensoldalikontroller kuldes  -- parancs terminalBeosztasTermekhez, (datum, idotartamegyseg, hutott, irany (ki-be), termek (struct))
   szerveroldali valasz
-  terminalbeosztasok terminalbeosztasletrehozasa
+  terminalbeosztasok terminalbeosztasletrehozasa -- szerver kiválaszt egy jó terminált !!!hibakezelés
   getterminalbeosztasok
   szerveroldali kontroller kuldessel válasz siker esetén terminálazonosito hiba esetén hibaüzenet
 

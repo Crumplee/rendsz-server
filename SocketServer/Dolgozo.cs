@@ -95,4 +95,9 @@ public class Dolgozo
     {
 
     }
+
+    public virtual void terminalBeosztasLetrehozasa(CommObject.termekAdatokStruct terminalBeosztas)
+    {
+
+    }
 }
