@@ -80,6 +80,7 @@ public class Diszpecser: Dolgozo
             case "datumEsHutottseg":
                 terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokDatumEsTipusSzerint(DateTime.Parse(terminalBeosztasLekerdezes.idopont),
                                                                                                                     terminalBeosztasLekerdezes.hutott);
+                Console.WriteLine("terminalbeosztasok szama: " + terminalbeosztasok.Count);
                 break;
             default:
                 break;
