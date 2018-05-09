@@ -7,6 +7,7 @@ public class SzerverKontroller
     
     public static Raktar raktar = new Raktar("Raktar", "Raktar utca 420", "xxXRaktar69Xxx");
     public static Munkarendek munkarendek = new Munkarendek();
+    public static Dolgozok dolgozok = new Dolgozok();
 
     private SzerverKontroller()
 	{
@@ -20,9 +21,7 @@ public class SzerverKontroller
             instance = new SzerverKontroller();
         }
         return instance;
-    }
-
-    
+    }    
 
     public CommObject Valasz(CommObject request, ref Dolgozo user)
     {
@@ -64,6 +63,14 @@ public class SzerverKontroller
                 break;
             case "munkarendLekerdezes":
                 response = user.munkarendLekerdezes(); ;
+                break;
+            case "felhasznaloHozzaadasa":
+                user.addFelhasznalo(request.felhasznaloAdatok);
+                response.Message = "felhasznaloHozzaadva";
+                break;
+            case "felhasznaloTorlese":
+
+                //response
                 break;
             default:
                 break;

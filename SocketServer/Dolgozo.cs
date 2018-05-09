@@ -75,4 +75,14 @@ public class Dolgozo
 
         return toResponse;
     }
+
+    public virtual void addFelhasznalo(CommObject.felhasznaloAdatokStruct ujFelhasznalo)
+    {
+
+    }
+
+    public virtual void deleteFelhasznalo()
+    {
+
+    }
 }

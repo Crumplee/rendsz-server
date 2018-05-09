@@ -10,11 +10,11 @@ public class Autentikator
     public Dolgozo autentikacio(string azonosito, string vonalkod)
     {
         Dolgozo user = null;
-        Dolgozok dolgozok = Dolgozok.Instance();       
+        //Dolgozok dolgozok = Dolgozok.Instance();       
 
-        dolgozok.init();
+        SzerverKontroller.dolgozok.init();
 
-        foreach (Dolgozo d in dolgozok.getDolgozok())
+        foreach (Dolgozo d in SzerverKontroller.dolgozok.getDolgozok())
         {
             
             if (d.getAzonosito() == azonosito && d.getVonalkod() == vonalkod)

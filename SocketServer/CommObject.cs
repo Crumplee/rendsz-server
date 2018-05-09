@@ -14,7 +14,8 @@ namespace Communication
         public List<beosztasAdatokStruct> beosztasokAdatokLista = new List<beosztasAdatokStruct>();
         public termekAdatokStruct termekAdatok;
         public beosztasAdatokStruct beosztasAdatok;
-
+        public felhasznaloAdatokStruct felhasznaloAdatok;
+        public List<felhasznaloAdatokStruct> felhasznalokLista = new List<felhasznaloAdatokStruct>();
 
         public struct bejelentkezesAdatok
         {
@@ -25,7 +26,21 @@ namespace Communication
                 azonosito = _azonosito;
                 vonalkod = _vonalkod;
             }
-        }       
+        }
+
+        public struct felhasznaloAdatokStruct
+        {
+            public string azonosito, vonalkod, nev, jogosultsag;
+
+            public felhasznaloAdatokStruct(string _azonosito, string _vonalkod, string _nev, string _jogosultsag)
+            {
+                azonosito = _azonosito;
+                vonalkod = _vonalkod;
+                nev = _nev;
+                jogosultsag = _jogosultsag;
+            }
+        }
+
 
         public struct termekAdatokStruct
         {

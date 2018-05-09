@@ -5,8 +5,8 @@ public class Dolgozok
 {
     List<Dolgozo> dolgozok = new List<Dolgozo>();
 
-    private static Dolgozok instance = new Dolgozok();
-
+    //private static Dolgozok instance = new Dolgozok();
+    /*
     public static Dolgozok Instance()
     {        
         if (instance == null)
@@ -15,10 +15,10 @@ public class Dolgozok
             instance = new Dolgozok();
         }
         return instance;        
-    }
+    }*/
 
 
-    private Dolgozok()
+    public Dolgozok()
 	{
        
     }
@@ -39,5 +39,10 @@ public class Dolgozok
     public List<Dolgozo> getDolgozok()
     {
         return dolgozok;
+    }
+
+    public void addFelhasznalo(Dolgozo d)
+    {
+        dolgozok.Add(d);
     }
 }
