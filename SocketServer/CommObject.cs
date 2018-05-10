@@ -19,6 +19,29 @@ namespace Communication
         public terminalBeosztasAdatokStruct terminalBeosztasAdatok;
         public List<terminalBeosztasAdatokStruct> terminalBeosztasAdatokLista = new List<terminalBeosztasAdatokStruct>();
         public terminalBeosztasLekerdezesStruct terminalBeosztasLekerdezes;
+        public termekMozgatasLekerdezesStruct termekMozgatasLekerdezes;
+
+
+
+        public struct termekMozgatasAdatokStruct
+        {
+
+        }
+
+
+        public struct termekMozgatasLekerdezesStruct
+        {
+            public string termekAzonosito;
+            public string idopont;
+            public string terminalAzonosito;
+
+            public termekMozgatasLekerdezesStruct(string _termekAzonosito, string _idopont, string _terminalAzonosito)
+            {
+                termekAzonosito = _termekAzonosito;
+                idopont = _idopont;
+                terminalAzonosito = _terminalAzonosito;
+            }
+        }
 
 
         public struct terminalBeosztasLekerdezesStruct
