@@ -8,6 +8,7 @@ namespace Communication
     {
         public string Message { get; set; }
         public bool hutott;
+        public string termekAzonosito;
         public List<string> lista;
         public bejelentkezesAdatok bejelentkezesadatok;
         public List<termekAdatokStruct> termekAdatokLista = new List<termekAdatokStruct>();
@@ -20,12 +21,21 @@ namespace Communication
         public List<terminalBeosztasAdatokStruct> terminalBeosztasAdatokLista = new List<terminalBeosztasAdatokStruct>();
         public terminalBeosztasLekerdezesStruct terminalBeosztasLekerdezes;
         public termekMozgatasLekerdezesStruct termekMozgatasLekerdezes;
+        public List<mozgoRaklapAdatokStruct> mozgoRaklapAdatok = new List<mozgoRaklapAdatokStruct>();
 
 
-
-        public struct termekMozgatasAdatokStruct
+        public struct mozgoRaklapAdatokStruct
         {
+            public string raklap;
+            public bool bejott;
+            public string epseg;
 
+            public mozgoRaklapAdatokStruct(string _raklap, bool _bejott, string _epseg)
+            {
+                raklap = _raklap;
+                bejott = _bejott;
+                epseg = _epseg;
+            }
         }
 
 

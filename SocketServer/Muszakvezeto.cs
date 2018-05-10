@@ -32,4 +32,20 @@ public class Muszakvezeto: Dolgozo
         Munkarend ujmunkarend = new Munkarend(adatok.dolgozoAzonosito, adatok.datum, adatok.muszakSorszam);
         SzerverKontroller.munkarendek.addMunkarend(ujmunkarend);
     }
+
+    public override CommObject getTerminalBeosztasTermekDatumTerminalSzerint(CommObject.termekMozgatasLekerdezesStruct termekMozgatasAdatok)
+    {
+        CommObject toResponse = new CommObject();
+        TerminalBeosztas tb = SzerverKontroller.terminalBeosztasok.getTerminalBeosztas(termekMozgatasAdatok.termekAzonosito, 
+                                                                                        DateTime.Parse(termekMozgatasAdatok.idopont),
+                                                                                        termekMozgatasAdatok.terminalAzonosito);
+        toResponse.termekAzonosito = termekMozgatasAdatok.termekAzonosito;
+        Termek termek = tb.getTermek();
+        foreach (Raklap r in termek.getRaklapok())
+        {
+            toResponse.mozgoRaklapAdatok.Add(new CommObject.mozgoRaklapAdatokStruct(r.getBelsoVonalkod(), false, ""));
+        }
+
+        return toResponse;
+    }
 }

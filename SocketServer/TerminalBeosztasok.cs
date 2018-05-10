@@ -68,4 +68,16 @@ public class TerminalBeosztasok
         return terminalBeosztasok_tmp;
     }
 
+    public TerminalBeosztas getTerminalBeosztas(string termekA, DateTime idopont, string terminalA)
+    {
+        foreach (TerminalBeosztas tb in terminalBeosztasok)
+        {
+            if (tb.getTermek().getKulsovonalkod() == termekA && tb.getIdopont() == idopont && tb.getTerminal().getAzonosito() == terminalA)
+            {
+                return tb;
+            }
+        }
+        return null;
+    }
+
 }

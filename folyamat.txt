@@ -115,7 +115,7 @@ szerver fogad
 terminalbeosztasok getterminalbeosztasokterminalszerint
 szerver visszaküldi a listát
 
-x
+
 (termekek szurt listazasa)
 kliensoldal termekekszurtlistazasa()
 termekeklistazasa termekekszurtlistazasa()
@@ -125,15 +125,16 @@ szerver fogad
 raktar gettermeklista(szurok)
 szerver visszaküldi
 
+x
 (termék behozatal)
 kliensoldali termekbehozatal
 termekmozgatas termekbehozatal
 bekérjük termék azonosítót meg dátumot meg terminálazonosítót
 ezeket küldjük
-szerver fogad műszakvezető termekbehozatal
-terminalbeosztasok getTerminalBeosztas ->getTermek ->getRaklapok
-visszamegy kliensre a raklapazonosítólista + külsővonalkód
-kliensen mindegyik raklapra megnézzük hogy bejött-e és hogy milyen állapotban
+  szerver fogad műszakvezető termekbehozatal HELYETT getTerminalBeosztasTermekDatumTerminalSzerint()
+  terminalbeosztasok getTerminalBeosztas ->getTermek ->getRaklapok
+  visszamegy kliensre a raklapazonosítólista + külsővonalkód
+kliensen mindegyik raklapra megnézzük hogy bejött-e és hogy milyen állapotban (string)
 termekbehozatalveglegesites
 kliens küld
 ....

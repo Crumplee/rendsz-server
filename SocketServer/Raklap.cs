@@ -3,8 +3,9 @@
 public class Raklap
 {
     string belsoVonalkod, raklaphelyAzonosito;
-    bool epsegBe, epsegKi;
+    string epsegBe, epsegKi;
     int mozgatasSzama;
+    bool raktarban;
 
     public string getBelsoVonalkod()
     {
@@ -17,14 +18,15 @@ public class Raklap
     }
 
 	public Raklap(string _belsoVonalkod, string _raklaphelyAzonosito,
-                    bool _epsegBe, bool _epsegKi, int _mozgatasSzama)
+                    string _epsegBe, string _epsegKi, int _mozgatasSzama, bool _raktarban)
 	{
         belsoVonalkod = _belsoVonalkod;
         raklaphelyAzonosito = _raklaphelyAzonosito;
         epsegBe = _epsegBe;
         epsegKi = _epsegKi;
         mozgatasSzama = _mozgatasSzama;
+        raktarban = _raktarban;
 
-        Console.WriteLine(raklaphelyAzonosito);
+        //Console.WriteLine(raklaphelyAzonosito);
 	}
 }

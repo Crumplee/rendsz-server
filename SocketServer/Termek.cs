@@ -73,7 +73,7 @@ public class Termek
         for (int i = 0; i < mennyiseg; ++i)
         {
             string kod = belsoKodGeneralas(termekNev, kulsoVonalkod, _raklaphelyek[i], beIdopont);
-            Raklap raklap_tmp = new Raklap(kod, _raklaphelyek[i], true, true, 0);
+            Raklap raklap_tmp = new Raklap(kod, _raklaphelyek[i], "", "", 0, false);
             raklapok.Add(raklap_tmp);
         }
 

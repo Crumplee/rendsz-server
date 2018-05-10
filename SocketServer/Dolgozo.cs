@@ -105,4 +105,9 @@ public class Dolgozo
     {
         return new CommObject();
     }
+
+    public virtual CommObject getTerminalBeosztasTermekDatumTerminalSzerint(CommObject.termekMozgatasLekerdezesStruct termekMozgatasAdatok)
+    {
+        return new CommObject();
+    }
 }

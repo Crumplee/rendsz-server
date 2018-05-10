@@ -84,9 +84,12 @@ public class SzerverKontroller
                 user.terminalBeosztasLetrehozasa(request.terminalBeosztasAdatok);
                 response.Message = "terminalBeosztasLetrehozva";
                 break;
-            case "terminalBeosztasLekerdezes":
+            case "terminalBeosztasokLekerdezes":
                 response = user.getTerminalBeosztasok(request.terminalBeosztasLekerdezes);
                 response.Message = "terminalBeosztas_" + request.terminalBeosztasLekerdezes.tipus;
+                break;
+            case "termekMozgatasLekerdezes":
+                response = user.getTerminalBeosztasTermekDatumTerminalSzerint(request.termekMozgatasLekerdezes);
                 break;
             default:
                 break;
