@@ -121,6 +121,25 @@ public class Raktar
             t.getRaklapok()[idx].setEpsegBe(epseg[i]);
         }
 
-        Console.WriteLine("termekbehozatal check -- " + t.getRaklapok()[0].getEpsegBe());
+        //Console.WriteLine("termekbehozatal check -- " + t.getRaklapok()[0].getEpsegBe());
+    }
+
+    public void termekKivitel(string azonosito, List<string> raklapok, List<string> epseg)
+    {
+        Termek t = getTermek(azonosito);
+
+        for (int i = 0; i < raklapok.Count; ++i)
+        {
+            Raklap r = t.getRaklap(raklapok[i]);
+            int idx = t.getRaklapok().IndexOf(r);
+            t.getRaklapok()[idx].setEpsegKi(epseg[i]);
+        }
+        termekTorles(t);
+
+    }
+
+    public void termekTorles(Termek t)
+    {
+        termekek.Remove(t);
     }
 }

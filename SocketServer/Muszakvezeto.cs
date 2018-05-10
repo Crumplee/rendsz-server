@@ -65,4 +65,18 @@ public class Muszakvezeto: Dolgozo
 
         SzerverKontroller.raktar.termekBehozatal(termek, raklapok, raktarban, epseg);
     }
+
+    public override void termekKivitel(string termek, List<CommObject.mozgoRaklapAdatokStruct> mozgoRaklapAdatok)
+    {
+        List<string> raklapok = new List<string>();
+        List<string> epseg = new List<string>();
+
+        foreach (CommObject.mozgoRaklapAdatokStruct mra in mozgoRaklapAdatok)
+        {
+            raklapok.Add(mra.raklap);
+            epseg.Add(mra.epseg);
+        }
+
+        SzerverKontroller.raktar.termekKivitel(termek, raklapok, epseg);
+    }
 }

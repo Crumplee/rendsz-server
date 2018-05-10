@@ -115,4 +115,9 @@ public class Dolgozo
     {
 
     }
+
+    public virtual void termekKivitel(string termek, List<CommObject.mozgoRaklapAdatokStruct> mozgoRaklapAdatok)
+    {
+
+    }
 }

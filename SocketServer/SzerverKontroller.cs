@@ -95,6 +95,9 @@ public class SzerverKontroller
                 user.termekBehozatal(request.termekAzonosito, request.mozgoRaklapAdatok);
                 response.Message = "termekBehozatalRogzitve";
                 break;
+            case "termekKivitel":
+
+                break;
             default:
                 break;
         }

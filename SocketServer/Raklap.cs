@@ -44,4 +44,9 @@ public class Raklap
     {
         return epsegBe;
     }
+
+    public void setEpsegKi(string e)
+    {
+        epsegKi = e;
+    }
 }

@@ -125,7 +125,7 @@ szerver fogad
 raktar gettermeklista(szurok)
 szerver visszaküldi
 
-x
+xxx
 (termék behozatal)
 kliensoldali termekbehozatal
 termekmozgatas termekbehozatal
@@ -141,6 +141,7 @@ kliens küld
 raktar termekbehozatalveglegesitese
 termek termek....
 
+x
 (termek kivitele)
 kliensoldali termek kivitel
 termekmozgatas termekkivitel
