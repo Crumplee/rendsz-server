@@ -41,6 +41,10 @@ public class Raktar
             string azon = "NHT" + (i + 1);
             terminalok.Add(new Terminal(azon, false));
         }
+
+        List<string> raklapokk = new List<string>();
+        raklapokk.Add("H1");
+        termekek.Add(new Termek("asd", "lol", "kek", "H", DateTime.Parse("2000-01-01"), DateTime.Parse("2010-01-01"), 1, raklapokk));
     }
 
     public List<string> getSzabadRaklaphelyekTipusSzerint(bool hutott)
@@ -97,7 +101,7 @@ public class Raktar
     {
         foreach (Termek t in termekek)
         {
-            if (t.getKulsovonalkod() == azonosito)
+            if (t.getKulsovonalkod() == kulsoVonalkod)
             {
                 return t;
             }

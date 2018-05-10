@@ -54,6 +54,9 @@ public class Diszpecser: Dolgozo
         Terminal terminal = SzerverKontroller.raktar.getTerminal(terminalBeosztas.terminalAzonosito);
         Termek termek = SzerverKontroller.raktar.getTermek(terminalBeosztas.termekAzonosito);
 
+        Console.WriteLine(terminal.getAzonosito());
+        Console.WriteLine(termek.getKulsovonalkod());
+
         TerminalBeosztas tb = new TerminalBeosztas(DateTime.Parse(terminalBeosztas.idopont),
                                                     terminalBeosztas.idotartamEgyseg,
                                                     termek,
@@ -68,6 +71,8 @@ public class Diszpecser: Dolgozo
     {
         CommObject toResponse = new CommObject();
         List<TerminalBeosztas> terminalbeosztasok = new List<TerminalBeosztas>();
+
+        Console.WriteLine(terminalBeosztasLekerdezes.tipus + " " + terminalBeosztasLekerdezes.idopont + " " + terminalBeosztasLekerdezes.hutott);
 
         switch (terminalBeosztasLekerdezes.tipus)
         {

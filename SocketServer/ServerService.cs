@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using System.Collections.Generic;
 
 namespace SocketServer
 {
@@ -25,7 +26,11 @@ namespace SocketServer
         {
             //init, töröld majd
             SzerverKontroller.dolgozok.init();
-            //SzerverKontroller.terminalBeosztasok.
+            List<string> raklapokk = new List<string>();
+            raklapokk.Add("H1");
+            Terminal tm = new Terminal("HT1", true);
+            Termek tk = new Termek("asd", "lol", "kek", "H", DateTime.Parse("2000-01-01"), DateTime.Parse("2010-01-01"), 1, raklapokk);
+            SzerverKontroller.terminalBeosztasok.terminalBeosztasLetrehozasa(new TerminalBeosztas(DateTime.Parse("2000-01-01"), 1, tk, "be", tm));
 
             TcpListener listener = new TcpListener(this.ipAddress, this.port);
             listener.Start();
@@ -92,7 +97,7 @@ namespace SocketServer
                     tcpClient.Close();
                 }
                 Console.WriteLine("Error connection closed, client: " + clientEndPoint);
-                //Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
         /*
