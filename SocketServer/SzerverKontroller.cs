@@ -96,7 +96,8 @@ public class SzerverKontroller
                 response.Message = "termekBehozatalRogzitve";
                 break;
             case "termekKivitel":
-
+                user.termekKivitel(request.termekAzonosito, request.mozgoRaklapAdatok);
+                response.Message = "termekKivitelRogzitve";
                 break;
             default:
                 break;
