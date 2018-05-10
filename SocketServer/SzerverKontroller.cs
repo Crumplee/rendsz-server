@@ -63,7 +63,10 @@ public class SzerverKontroller
                 response.Message = "munkarendHozzaadva";
                 break;
             case "munkarendLekerdezes":
-                response = user.munkarendLekerdezes(); ;
+                response = user.munkarendLekerdezes(user.getAzonosito());
+                break;
+            case "munkarendekLekerdezes":
+                response = user.munkarendekLekerdezes();
                 break;
             case "felhasznaloHozzaadasa":
                 user.addFelhasznalo(request.felhasznaloAdatok);

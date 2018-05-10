@@ -79,4 +79,17 @@ public class Muszakvezeto: Dolgozo
 
         SzerverKontroller.raktar.termekKivitel(termek, raklapok, epseg);
     }
+
+    public override CommObject munkarendekLekerdezes()
+    {
+        CommObject toResponse = new CommObject();
+        List<Munkarend> munkarendek = SzerverKontroller.munkarendek.getMunkarendek();
+
+        foreach (Munkarend munkarend in munkarendek)
+        {
+            toResponse.beosztasokAdatokLista.Add(new CommObject.beosztasAdatokStruct(munkarend.getDolgozoAzonosito(), munkarend.getDatum(), munkarend.getMuszakSorszam()));
+        }
+
+        return toResponse;
+    }
 }

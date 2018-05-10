@@ -147,8 +147,8 @@ kliensoldali termek kivitel
 termekmozgatas termekkivitel
 bekérjük termék azonosítót meg dátumot meg terminálazonosítót
 ezeket küldjük
-szerver fogad műszakvezető termekkivitel
-terminalbeosztasok getTerminalBeosztas ->getTermek ->getRaklapok
+  szerver fogad műszakvezető termekkivitel
+  terminalbeosztasok getTerminalBeosztas ->getTermek ->getRaklapok
 megy vissza klienshez
 megerősítést kérünk
 termekkivitelveglegesítése

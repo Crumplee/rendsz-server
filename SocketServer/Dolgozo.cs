@@ -63,17 +63,26 @@ public class Dolgozo
         
     }
 
-    public CommObject munkarendLekerdezes()
+    public CommObject munkarendLekerdezes(string azonosito)
     {
         CommObject toResponse = new CommObject();
         List<Munkarend> munkarendek = SzerverKontroller.munkarendek.getMunkarendek();
 
         foreach (Munkarend munkarend in munkarendek)
         {
-            toResponse.beosztasokAdatokLista.Add(new CommObject.beosztasAdatokStruct(munkarend.getDolgozoAzonosito(), munkarend.getDatum(), munkarend.getMuszakSorszam()));
+            if (munkarend.getDolgozoAzonosito() == azonosito)
+            {
+                toResponse.beosztasokAdatokLista.Add(new CommObject.beosztasAdatokStruct(munkarend.getDolgozoAzonosito(), munkarend.getDatum(), munkarend.getMuszakSorszam()));
+
+            }
         }
 
         return toResponse;
+    }
+
+    public virtual CommObject munkarendekLekerdezes()
+    {
+        return new CommObject();
     }
 
     public virtual void addFelhasznalo(CommObject.felhasznaloAdatokStruct ujFelhasznalo)
