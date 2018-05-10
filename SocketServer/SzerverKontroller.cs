@@ -91,6 +91,10 @@ public class SzerverKontroller
             case "termekMozgatasLekerdezes":
                 response = user.getTerminalBeosztasTermekDatumTerminalSzerint(request.termekMozgatasLekerdezes);
                 break;
+            case "termekBehozatal":
+                user.termekBehozatal(request.termekAzonosito, request.mozgoRaklapAdatok);
+                response.Message = "termekBehozatalRogzitve";
+                break;
             default:
                 break;
         }

@@ -48,4 +48,21 @@ public class Muszakvezeto: Dolgozo
 
         return toResponse;
     }
+
+    public override void termekBehozatal(string termek, List<CommObject.mozgoRaklapAdatokStruct> mozgoRaklapAdatok)
+    {
+
+        List<string> raklapok = new List<string>();
+        List<bool> raktarban = new List<bool>();
+        List<string> epseg = new List<string>();
+        
+        foreach (CommObject.mozgoRaklapAdatokStruct mra in mozgoRaklapAdatok)
+        {
+            raklapok.Add(mra.raklap);
+            raktarban.Add(mra.bejott);
+            epseg.Add(mra.epseg);
+        }
+
+        SzerverKontroller.raktar.termekBehozatal(termek, raklapok, raktarban, epseg);
+    }
 }

@@ -110,4 +110,9 @@ public class Dolgozo
     {
         return new CommObject();
     }
+
+    public virtual void termekBehozatal(string termek, List<CommObject.mozgoRaklapAdatokStruct> mozgoRaklapAdatok)
+    {
+
+    }
 }

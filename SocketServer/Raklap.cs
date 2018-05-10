@@ -29,4 +29,19 @@ public class Raklap
 
         //Console.WriteLine(raklaphelyAzonosito);
 	}
+
+    public void setEpsegBe(string e)
+    {
+        epsegBe = e;
+    }
+
+    public void setRaktarban(bool r)
+    {
+        raktarban = r;
+    }
+
+    public string getEpsegBe()
+    {
+        return epsegBe;
+    }
 }

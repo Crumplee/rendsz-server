@@ -90,4 +90,16 @@ public class Termek
         kod += _raklaphely;
         return kod;
     }
+
+    public Raklap getRaklap(string azonosito)
+    {
+        foreach(Raklap r in raklapok)
+        {
+            if (r.getBelsoVonalkod() == azonosito)
+            {
+                return r;
+            }
+        }
+        return null;
+    }
 }

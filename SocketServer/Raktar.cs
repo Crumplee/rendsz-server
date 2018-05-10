@@ -108,4 +108,19 @@ public class Raktar
         }
         return null;
     }
+
+    public void termekBehozatal(string azonosito, List<string> raklapok, List<bool> raktarban, List<string> epseg)
+    {
+        Termek t = getTermek(azonosito);
+
+        for (int i = 0; i < raklapok.Count; ++i)
+        {
+            Raklap r = t.getRaklap(raklapok[i]);
+            int idx = t.getRaklapok().IndexOf(r);
+            t.getRaklapok()[idx].setRaktarban(raktarban[i]);
+            t.getRaklapok()[idx].setEpsegBe(epseg[i]);
+        }
+
+        Console.WriteLine("termekbehozatal check -- " + t.getRaklapok()[0].getEpsegBe());
+    }
 }
