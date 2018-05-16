@@ -45,6 +45,16 @@ public class Raktar
         List<string> raklapokk = new List<string>();
         raklapokk.Add("H1");
         termekek.Add(new Termek("asd", "lol", "kek", "H", DateTime.Parse("2000-01-01"), DateTime.Parse("2010-01-01"), 1, raklapokk));
+        raklapokk.Clear();
+
+        raklapokk.Add("H2");
+        raklapokk.Add("H3");
+        termekek.Add(new Termek("pisi", "kaka", "kek", "H", DateTime.Parse("2005-01-01"), DateTime.Parse("2018-01-01"), 2, raklapokk));
+        raklapokk.Clear();
+
+        raklapokk.Add("HT1");
+        termekek.Add(new Termek("asd2", "lol2", "kek2", "NH", DateTime.Parse("2004-01-01"), DateTime.Parse("2000-01-01"), 1, raklapokk));
+        raklapokk.Clear();
     }
 
     public List<string> getSzabadRaklaphelyekTipusSzerint(bool hutott)

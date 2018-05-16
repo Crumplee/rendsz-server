@@ -115,7 +115,7 @@ szerver fogad
 terminalbeosztasok getterminalbeosztasokterminalszerint
 szerver visszaküldi a listát
 
-
+xxx
 (termekek szurt listazasa)
 kliensoldal termekekszurtlistazasa()
 termekeklistazasa termekekszurtlistazasa()
@@ -172,6 +172,7 @@ küldjük szerverre a régi és az új adatokat -> diszpécser termekModositas -
 xxx
 (termek torles)
 kliens oldali kontroller termekTorles -> TermekKezeles termekTorles -> lekérdezzük az összes terméket (termékek lekérdezése cucc)) -> bekérjük a termék sorszámát -> elküldjük szervernek parancs: termekTorlese -> diszpecser termektorles ->kontroller -,,- -> raktar -,,- (terminál beosztást is kell törölni hozzá) -> sikerről üzenet
+
 
 (logolás) automatikusan minden után lefut. működés: szerver oldalon csak, szerver kontroller createLog(log) -> Logger saveLog(log) 
 adatok: időpont, ki, mit csinált, további adatok (funkció függő)
