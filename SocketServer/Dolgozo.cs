@@ -17,6 +17,7 @@ public class Dolgozo
     {
         return azonosito;
     }
+    
 
     public string getVonalkod()
     {

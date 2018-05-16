@@ -29,7 +29,7 @@ public class Adminisztrator: Dolgozo
 
         foreach (Dolgozo d in dolgozok)
         {
-            toResponse.felhasznalokLista.Add(new CommObject.felhasznaloAdatokStruct(d.getAzonosito(), "", d.getNev(), d.getJogosultsag()));
+            toResponse.felhasznalokLista.Add(new CommObject.felhasznaloAdatokStruct(d.getAzonosito(), d.getVonalkod(), d.getNev(), d.getJogosultsag()));
         }
 
         return toResponse;
@@ -42,6 +42,7 @@ public class Adminisztrator: Dolgozo
 
     public override void modifyFelhasznalo(CommObject.felhasznaloAdatokStruct felhasznalo)
     {
+
         Dolgozo dolgozo = new Dolgozo(felhasznalo.azonosito, felhasznalo.vonalkod, felhasznalo.nev, felhasznalo.jogosultsag);
         SzerverKontroller.dolgozok.modifyFelhasznalo(dolgozo);
     }
