@@ -105,4 +105,19 @@ public class Diszpecser: Dolgozo
 
         return toResponse;
     }
+
+    public override void termekModositas(string termekAzonosito, CommObject.termekAdatokStruct adatok)
+    {
+        Termek t = new Termek(adatok.megrendeloAzonosito,
+                                        adatok.termekNev,
+                                        adatok.kulsoVonalkod,
+                                        adatok.tipus,
+                                        DateTime.Parse(adatok.beIdopont),
+                                        DateTime.Parse(adatok.kiIdopont),
+                                        adatok.mennyiseg,
+                                        adatok.raklaphelyek);
+
+        SzerverKontroller.raktar.termekModositas(termekAzonosito, t);
+        SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito);
+    }
 }

@@ -60,7 +60,7 @@ public class Muszakvezeto: Dolgozo
         {
             raklapok.Add(mra.raklap);
             raktarban.Add(mra.bejott);
-            epseg.Add(mra.epseg);
+            epseg.Add(mra.epseg);   
         }
 
         SzerverKontroller.raktar.termekBehozatal(termek, raklapok, raktarban, epseg);

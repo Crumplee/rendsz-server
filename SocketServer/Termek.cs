@@ -12,6 +12,33 @@ public class Termek
     int mennyiseg;
     List<Raklap> raklapok = new List<Raklap>();
 
+
+    public void setMegrendeloAzonosito(string azon)
+    {
+        megrendeloAzonosito = azon;
+    }
+
+    public void setTermekNev(string nev)
+    {
+        termekNev = nev;
+    }
+
+    public void setKulsoVonalkod(string kod)
+    {
+        kulsoVonalkod = kod;
+    }
+
+    public void setBeIdopont(DateTime date)
+    {
+        beIdopont = date;
+    }
+
+    public void setKiIdopont(DateTime date)
+    {
+        kiIdopont = date;
+    }
+
+
     public string getMegrendeloAzonosito()
     {
         return megrendeloAzonosito;

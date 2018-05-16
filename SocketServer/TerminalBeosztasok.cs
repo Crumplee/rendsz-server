@@ -80,4 +80,15 @@ public class TerminalBeosztasok
         return null;
     }
 
+    public void terminalBeosztasTorles(string termekAzon)
+    {
+        for (int i = terminalBeosztasok.Count - 1; i >= 0; --i)
+        {
+            if (terminalBeosztasok[i].getTermek().getKulsovonalkod() == termekAzon)
+            {
+                terminalBeosztasok.RemoveAt(i);
+            }
+        }
+    }
+
 }

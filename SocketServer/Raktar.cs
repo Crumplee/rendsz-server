@@ -142,4 +142,22 @@ public class Raktar
     {
         termekek.Remove(t);
     }
+
+    public void termekModositas(string termekAzonosito, Termek termek)
+    {
+        for (int i = 0; i < termekek.Count; ++i)
+        {
+            if (termekek[i].getKulsovonalkod() == termekAzonosito)
+            {
+                termekek[i].setTermekNev(termek.getTermekNev());
+                termekek[i].setKulsoVonalkod(termek.getKulsovonalkod());
+                termekek[i].setBeIdopont(termek.getBeIdopont());
+                termekek[i].setKiIdopont(termek.getKiIdopont());
+                termekek[i].setMegrendeloAzonosito(termek.getMegrendeloAzonosito());
+                break;
+            }
+        }
+
+        Console.WriteLine(getTermek(termekAzonosito).getTermekNev());
+    }
 }

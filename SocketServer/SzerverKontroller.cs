@@ -102,6 +102,10 @@ public class SzerverKontroller
                 user.termekKivitel(request.termekAzonosito, request.mozgoRaklapAdatok);
                 response.Message = "termekKivitelRogzitve";
                 break;
+            case "termekModositas":
+                user.termekModositas(request.termekAzonosito, request.termekAdatok);
+                response.Message = "termekModositva";
+                break;
             default:
                 break;
         }

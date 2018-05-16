@@ -130,4 +130,9 @@ public class Dolgozo
     {
 
     }
+
+    public virtual void termekModositas(string termekAzonosito, CommObject.termekAdatokStruct adatok)
+    {
+
+    }
 }
