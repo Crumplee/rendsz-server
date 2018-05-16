@@ -103,6 +103,7 @@ public class SzerverKontroller
                 response.Message = "termekKivitelRogzitve";
                 break;
             case "termekModositas":
+                //Console.WriteLine("kapta halt");
                 user.termekModositas(request.termekAzonosito, request.termekAdatok);
                 response.Message = "termekModositva";
                 break;

@@ -108,23 +108,63 @@ public class Diszpecser: Dolgozo
 
     public override void termekModositas(string termekAzonosito, CommObject.termekAdatokStruct adatok)
     {
+        Termek eredetiTermek = SzerverKontroller.raktar.getTermek(termekAzonosito);
+        string eredetiBe = eredetiTermek.getBeIdopont().ToString();
+        string eredetiKi = eredetiTermek.getKiIdopont().ToString();
+
+        //Console.WriteLine(termekAzonosito);
+        //Console.WriteLine(adatok.kulsoVonalkod);
+
         Termek t = new Termek(adatok.megrendeloAzonosito,
                                         adatok.termekNev,
                                         adatok.kulsoVonalkod,
-                                        adatok.tipus,
+                                        "",
                                         DateTime.Parse(adatok.beIdopont),
                                         DateTime.Parse(adatok.kiIdopont),
-                                        adatok.mennyiseg,
-                                        adatok.raklaphelyek);
+                                        0,
+                                        null);
 
         SzerverKontroller.raktar.termekModositas(termekAzonosito, t);
-        SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito);
+
+        if (eredetiBe != t.getBeIdopont().ToString())
+        {
+            SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito, "be");
+        }
+
+        if (eredetiKi != t.getKiIdopont().ToString())
+        {
+            SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito, "ki");
+        }
+
     }
 
     public override void termekTorles(string termekAzonosito)
     {
         Termek t = SzerverKontroller.raktar.getTermek(termekAzonosito);
         SzerverKontroller.raktar.termekTorles(t);
-        SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito);
+        SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito, "be");
+        SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito, "ki");
+    }
+
+    public override CommObject termekeSzurtListazasa(CommObject.termekAdatokStruct adatok)
+    {
+        CommObject toResponse = new CommObject();
+
+        Termek termekSzurok = new Termek(adatok.megrendeloAzonosito, adatok.termekNev, adatok.kulsoVonalkod, "",
+                                         DateTime.Parse(adatok.beIdopont), DateTime.Parse(adatok.kiIdopont), 0, null);
+
+        List<Termek> termekek = SzerverKontroller.raktar.getTermekLista(termekSzurok);
+
+        foreach (Termek termek in termekek)
+        {
+            CommObject.termekAdatokStruct tmp = new CommObject.termekAdatokStruct(termek.getMegrendeloAzonosito(), termek.getTermekNev(),
+                termek.getKulsovonalkod(), termek.getTipus(), termek.getBeIdopont().ToString(), termek.getKiIdopont().ToString(), termek.getMennyiseg(), new List<string>());
+            foreach (Raklap raklap in termek.getRaklapok())
+            {
+                tmp.raklapAdatok.Add(raklap.toString());
+            }
+            toResponse.termekAdatokLista.Add(tmp);
+        }
+        return toResponse;
     }
 }

@@ -169,6 +169,7 @@ kliens oldali kontroller termekModositas -> TermekKezeles termekModositas -> lek
 
 küldjük szerverre a régi és az új adatokat -> diszpécser termekModositas -> szerver kontroller termekModositas -> Raktar termekModositas() -> ha időpontok változnak, a régi terminál beosztásokat törölni kell (szerver kontroller terminalBeosztasTorles -> TerminalBeosztasok terminalBeosztasTorles) -> kliensnek üzenet h jó minden -> ezután kliensről még terminálbeosztáshozzáadás az új adatokkal (lásd terminálbeosztás hozzáadás) -> ennyi
 
+xxx
 (termek torles)
 kliens oldali kontroller termekTorles -> TermekKezeles termekTorles -> lekérdezzük az összes terméket (termékek lekérdezése cucc)) -> bekérjük a termék sorszámát -> elküldjük szervernek parancs: termekTorlese -> diszpecser termektorles ->kontroller -,,- -> raktar -,,- (terminál beosztást is kell törölni hozzá) -> sikerről üzenet
 

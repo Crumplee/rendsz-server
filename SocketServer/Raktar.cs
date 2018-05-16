@@ -157,7 +157,14 @@ public class Raktar
                 break;
             }
         }
+        
+    }
 
-        Console.WriteLine(getTermek(termekAzonosito).getTermekNev());
+    public List<Termek> getTermekLista(Termek t)
+    {
+        List<Termek> termekek = new List<Termek>();
+
+
+        return termekek;
     }
 }

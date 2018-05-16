@@ -140,4 +140,9 @@ public class Dolgozo
     {
 
     }
+
+    public virtual CommObject termekeSzurtListazasa(CommObject.termekAdatokStruct adatok)
+    {
+        return new CommObject();
+    }
 }

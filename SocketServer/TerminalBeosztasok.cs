@@ -80,15 +80,25 @@ public class TerminalBeosztasok
         return null;
     }
 
-    public void terminalBeosztasTorles(string termekAzon)
+    public void terminalBeosztasTorles(string termekAzon, string irany)
     {
-        for (int i = terminalBeosztasok.Count - 1; i >= 0; --i)
+        TerminalBeosztas tb_tmp = null;
+
+        Console.WriteLine(termekAzon + ' ' + irany);
+        foreach (TerminalBeosztas tb in terminalBeosztasok)
         {
-            if (terminalBeosztasok[i].getTermek().getKulsovonalkod() == termekAzon)
+            if (tb.getTermek().getKulsovonalkod() == termekAzon && tb.getIrany() == irany)
             {
-                terminalBeosztasok.RemoveAt(i);
+                tb_tmp = tb;
+                break;
             }
         }
+
+        if (tb_tmp != null)
+        {
+            terminalBeosztasok.Remove(tb_tmp);
+        }
+
     }
 
 }
