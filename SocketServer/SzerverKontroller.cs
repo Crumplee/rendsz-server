@@ -106,6 +106,10 @@ public class SzerverKontroller
                 user.termekModositas(request.termekAzonosito, request.termekAdatok);
                 response.Message = "termekModositva";
                 break;
+            case "termekTorlese":
+                user.termekTorles(request.termekAzonosito);
+                response.Message = "termekTorolve";
+                break;
             default:
                 break;
         }

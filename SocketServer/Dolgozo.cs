@@ -135,4 +135,9 @@ public class Dolgozo
     {
 
     }
+
+    public virtual void termekTorles(string termekAzonosito)
+    {
+
+    }
 }

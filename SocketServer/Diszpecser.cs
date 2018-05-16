@@ -120,4 +120,11 @@ public class Diszpecser: Dolgozo
         SzerverKontroller.raktar.termekModositas(termekAzonosito, t);
         SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito);
     }
+
+    public override void termekTorles(string termekAzonosito)
+    {
+        Termek t = SzerverKontroller.raktar.getTermek(termekAzonosito);
+        SzerverKontroller.raktar.termekTorles(t);
+        SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito);
+    }
 }
