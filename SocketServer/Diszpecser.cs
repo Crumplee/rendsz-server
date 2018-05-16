@@ -152,11 +152,9 @@ public class Diszpecser: Dolgozo
 
         Termek termekSzurok = new Termek(adatok.megrendeloAzonosito, adatok.termekNev, adatok.kulsoVonalkod, adatok.tipus,
                                          DateTime.Parse(adatok.beIdopont), DateTime.Parse(adatok.kiIdopont), 0, adatok.raklapAdatok);
-
         
-
         List<Termek> termekek = SzerverKontroller.raktar.getTermekLista(termekSzurok);
-
+            
         foreach (Termek termek in termekek)
         {
             CommObject.termekAdatokStruct tmp = new CommObject.termekAdatokStruct(termek.getMegrendeloAzonosito(), termek.getTermekNev(),

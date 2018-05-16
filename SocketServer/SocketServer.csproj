@@ -49,6 +49,7 @@
     <Compile Include="Diszpecser.cs" />
     <Compile Include="Dolgozo.cs" />
     <Compile Include="Dolgozok.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Munkarend.cs" />
     <Compile Include="Munkarendek.cs" />
     <Compile Include="Muszakvezeto.cs" />

@@ -178,17 +178,20 @@ public class Raktar
         //kulsovonkod
         if (szurok.getKulsovonalkod() != null)
         {
+           // Console.WriteLine("szuro: " + szurok.getKulsovonalkod());
             foreach (Termek t in termekekLista)
             {
+                //Console.WriteLine("pl: " + t.getKulsovonalkod());
                 if (szurok.getKulsovonalkod() == t.getKulsovonalkod())
                 {
+                    //Console.WriteLine("bent van");
                     termekekLista_tmp.Add(t);
                 }
             }
             termekekLista = termekekLista_tmp;
-            termekekLista_tmp.Clear();
+            termekekLista_tmp = new List<Termek>();
         }
-
+        
         //termeknev
         if (szurok.getTermekNev() != null)
         {
@@ -200,7 +203,7 @@ public class Raktar
                 }
             }
             termekekLista = termekekLista_tmp;
-            termekekLista_tmp.Clear();
+            termekekLista_tmp = new List<Termek>();
         }
 
         //bedatum
@@ -214,7 +217,7 @@ public class Raktar
                 }
             }
             termekekLista = termekekLista_tmp;
-            termekekLista_tmp.Clear();
+            termekekLista_tmp = new List<Termek>();
         }
 
         //kidatum
@@ -228,7 +231,7 @@ public class Raktar
                 }
             }
             termekekLista = termekekLista_tmp;
-            termekekLista_tmp.Clear();
+            termekekLista_tmp = new List<Termek>();
         }
 
         //tipus
@@ -242,7 +245,7 @@ public class Raktar
                 }
             }
             termekekLista = termekekLista_tmp;
-            termekekLista_tmp.Clear();
+            termekekLista_tmp = new List<Termek>();
         }
 
         //megrendelo
@@ -256,7 +259,7 @@ public class Raktar
                 }
             }
             termekekLista = termekekLista_tmp;
-            termekekLista_tmp.Clear();
+            termekekLista_tmp = new List<Termek>();
         }
         
         //raklap
@@ -273,7 +276,7 @@ public class Raktar
                 }
             }
             termekekLista = termekekLista_tmp;
-            termekekLista_tmp.Clear();
+            termekekLista_tmp = new List<Termek>();
         }
 
 
