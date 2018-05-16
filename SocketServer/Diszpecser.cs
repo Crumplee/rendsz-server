@@ -150,8 +150,10 @@ public class Diszpecser: Dolgozo
     {
         CommObject toResponse = new CommObject();
 
-        Termek termekSzurok = new Termek(adatok.megrendeloAzonosito, adatok.termekNev, adatok.kulsoVonalkod, "",
-                                         DateTime.Parse(adatok.beIdopont), DateTime.Parse(adatok.kiIdopont), 0, null);
+        Termek termekSzurok = new Termek(adatok.megrendeloAzonosito, adatok.termekNev, adatok.kulsoVonalkod, adatok.tipus,
+                                         DateTime.Parse(adatok.beIdopont), DateTime.Parse(adatok.kiIdopont), 0, adatok.raklapAdatok);
+
+        
 
         List<Termek> termekek = SzerverKontroller.raktar.getTermekLista(termekSzurok);
 

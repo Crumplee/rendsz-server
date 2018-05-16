@@ -92,4 +92,28 @@ public class Muszakvezeto: Dolgozo
 
         return toResponse;
     }
+
+    public override CommObject termekeSzurtListazasa(CommObject.termekAdatokStruct adatok)
+    {
+        CommObject toResponse = new CommObject();
+
+        Termek termekSzurok = new Termek(adatok.megrendeloAzonosito, adatok.termekNev, adatok.kulsoVonalkod, adatok.tipus,
+                                         DateTime.Parse(adatok.beIdopont), DateTime.Parse(adatok.kiIdopont), 0, adatok.raklapAdatok);
+
+
+
+        List<Termek> termekek = SzerverKontroller.raktar.getTermekLista(termekSzurok);
+
+        foreach (Termek termek in termekek)
+        {
+            CommObject.termekAdatokStruct tmp = new CommObject.termekAdatokStruct(termek.getMegrendeloAzonosito(), termek.getTermekNev(),
+                termek.getKulsovonalkod(), termek.getTipus(), termek.getBeIdopont().ToString(), termek.getKiIdopont().ToString(), termek.getMennyiseg(), new List<string>());
+            foreach (Raklap raklap in termek.getRaklapok())
+            {
+                tmp.raklapAdatok.Add(raklap.toString());
+            }
+            toResponse.termekAdatokLista.Add(tmp);
+        }
+        return toResponse;
+    }
 }

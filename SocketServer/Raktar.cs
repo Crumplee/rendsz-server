@@ -160,11 +160,113 @@ public class Raktar
         
     }
 
-    public List<Termek> getTermekLista(Termek t)
+    public List<Termek> getTermekLista(Termek szurok)
     {
-        List<Termek> termekek = new List<Termek>();
+        List<Termek> termekekLista = termekek;
+        List<Termek> termekekLista_tmp = new List<Termek>();
+
+        //kulsovonkod
+        if (szurok.getKulsovonalkod() != null)
+        {
+            foreach (Termek t in termekekLista)
+            {
+                if (szurok.getKulsovonalkod() == t.getKulsovonalkod())
+                {
+                    termekekLista_tmp.Add(t);
+                }
+            }
+            termekekLista = termekekLista_tmp;
+            termekekLista_tmp.Clear();
+        }
+
+        //termeknev
+        if (szurok.getTermekNev() != null)
+        {
+            foreach (Termek t in termekekLista)
+            {
+                if (szurok.getTermekNev() == t.getTermekNev())
+                {
+                    termekekLista_tmp.Add(t);
+                }
+            }
+            termekekLista = termekekLista_tmp;
+            termekekLista_tmp.Clear();
+        }
+
+        //bedatum
+        if (szurok.getBeIdopont().ToString() != new DateTime().ToString())
+        {
+            foreach (Termek t in termekekLista)
+            {
+                if (szurok.getBeIdopont().ToString() == t.getBeIdopont().ToString())
+                {
+                    termekekLista_tmp.Add(t);
+                }
+            }
+            termekekLista = termekekLista_tmp;
+            termekekLista_tmp.Clear();
+        }
+
+        //kidatum
+        if (szurok.getKiIdopont().ToString() != new DateTime().ToString())
+        {
+            foreach (Termek t in termekekLista)
+            {
+                if (szurok.getKiIdopont().ToString() == t.getKiIdopont().ToString())
+                {
+                    termekekLista_tmp.Add(t);
+                }
+            }
+            termekekLista = termekekLista_tmp;
+            termekekLista_tmp.Clear();
+        }
+
+        //tipus
+        if (szurok.getTipus() != null)
+        {
+            foreach (Termek t in termekekLista)
+            {
+                if (szurok.getTipus() == t.getTipus())
+                {
+                    termekekLista_tmp.Add(t);
+                }
+            }
+            termekekLista = termekekLista_tmp;
+            termekekLista_tmp.Clear();
+        }
+
+        //megrendelo
+        if (szurok.getMegrendeloAzonosito() != null)
+        {
+            foreach (Termek t in termekekLista)
+            {
+                if (szurok.getMegrendeloAzonosito() == t.getMegrendeloAzonosito())
+                {
+                    termekekLista_tmp.Add(t);
+                }
+            }
+            termekekLista = termekekLista_tmp;
+            termekekLista_tmp.Clear();
+        }
+        
+        //raklap
+        if (szurok.getRaklapok().Count > 0)
+        {
+            foreach (Termek t in termekekLista)
+            {
+                for (int i = 0; i < t.getRaklapok().Count; ++i)
+                {
+                    if (szurok.getRaklapok()[0] == t.getRaklapok()[i])
+                    {
+                        termekekLista_tmp.Add(t);
+                    }
+                }
+            }
+            termekekLista = termekekLista_tmp;
+            termekekLista_tmp.Clear();
+        }
 
 
-        return termekek;
+        return termekekLista;
     }
 }

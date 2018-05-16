@@ -111,6 +111,9 @@ public class SzerverKontroller
                 user.termekTorles(request.termekAzonosito);
                 response.Message = "termekTorolve";
                 break;
+            case "termekSzurese":
+                response = user.termekeSzurtListazasa(request.termekAdatok);
+                break;
             default:
                 break;
         }
