@@ -119,9 +119,9 @@ szerver visszaküldi a listát
 (termekek szurt listazasa)
 kliensoldal termekekszurtlistazasa()
 termekeklistazasa termekekszurtlistazasa()
-bekérjük a szűrőket végjelig
+bekérjük a szűrőket végjelig, amik lehetnek, név, külső vonalkód, be dátum, ki dátum, típus, raklap azonosító, megrendelőazonosító
 kliens küld
-szerver fogad
+szerver fogad -> diszpécser/műszakvezető termekekSzurtListazasa -> szerver kontroller termekekSzurtListazasa
 raktar gettermeklista(szurok)
 szerver visszaküldi
 
@@ -141,7 +141,7 @@ kliens küld
 raktar termekbehozatalveglegesitese
 termek termek....
 
-x
+xxx
 (termek kivitele)
 kliensoldali termek kivitel
 termekmozgatas termekkivitel
@@ -154,3 +154,23 @@ megerősítést kérünk
 termekkivitelveglegesítése
 adatok mennek szerverre
 műszakvezető termekkivitelvéglegesítése ->szerver kontroller termekkivitelvéglegesítése -> raktar termekkivitelvéglegesítése
+
+/*
+(terminal beosztas modositasa)
+kliens oldali kontroller terminalBeosztasModositasa -> TerminalBeosztasKezeles terminalBeosztasModositasa -> kuldes szervernek termekekListazasa
+bekérjük a termék sorszámot -> kuldes szervernek parancs:terminalBeosztasLekerdezes megfelelő paraméterekkel -> (átmentünk szerverre)
+szerver fogad -> szerver kontroller terminalBeosztasLekerdezes -> TerminalBeosztasok getTerminalBeosztasokTermekSzerint -> listát küldi kliensnek
+kliens oldal: kiválasztja a megfelelő sorszámú terminál beosztást. Helyben módosíthatja menürendszerben: idopont, idotartamegyseg, irany, terminal azonosito, hutott. Ebből idopont, idotartamegyseg, terminal azonositoknál le kell kérni a listát arra a napra. Ehhez: terminálBeosztásLekérdezése, amúgy megy a módosított adatokat küldjük szervernek parancs: terminalBeosztasModositasa. Szerveren kontrollernek a terminalBeosztasModositasa -> TerminalBeosztasok modifyTerminalBeosztasTermekSzerint -> válasz kliensnek sikeres módosításról
+*/
+
+(termek modositas)
+kliens oldali kontroller termekModositas -> TermekKezeles termekModositas -> lekérdezzük az összes terméket (termékek lekérdezése cucc)) -> bekérjük a termék sorszámát -> aztán hogy miket módosítunk menüs módszerrel kivéve típust és mennyiséget, be - kiidőpont változtatásnál új terminál beosztást viszünk fel(lásd terminál beosztások lekérdezése dátum szerint). -> megerősítés kérése -> küldjük szerverre a régi és az új adatokat -> diszpécser termekModositas -> szerver kontroller termekModositas -> Raktar termekModositas() -> ha időpontok változnak, a régi terminál beosztásokat törölni kell (szerver kontroller terminalBeosztasTorles -> TerminalBeosztasok terminalBeosztasTorles) -> kliensnek üzenet h jó minden -> ezután kliensről még terminálbeosztáshozzáadás az új adatokkal (lásd terminálbeosztás hozzáadás) -> ennyi
+
+(termek torles)
+kliens oldali kontroller termekTorles -> TermekKezeles termekTorles -> lekérdezzük az összes terméket (termékek lekérdezése cucc)) -> bekérjük a termék sorszámát -> elküldjük szervernek parancs: termekTorlese -> diszpecser termektorles ->kontroller -,,- -> raktar -,,- (terminál beosztást is kell törölni hozzá) -> sikerről üzenet
+
+(logolás) automatikusan minden után lefut. működés: szerver oldalon csak, szerver kontroller createLog(log) -> Logger saveLog(log) 
+adatok: időpont, ki, mit csinált, további adatok (funkció függő)
+
+(logok listazasa)
+kliens kontroller logokListazasa ->  LogMegtekintes logokListazasa -> küldés szerónak parancs: logokListazasa szerveren válasz -> adminisztrátor logokListazasa -> szerver kontroller logokListazasa -> logger loadLogs -> kliensnek visszaküldjük és pá
