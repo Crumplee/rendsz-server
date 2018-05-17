@@ -2,11 +2,13 @@
 
 public class TerminalBeosztas
 {
-    DateTime idopont;
-    int idotartamEgyseg; //30 perc
-    Termek termek;
-    string irany;
-    Terminal terminal;
+    public DateTime idopont;
+    public int idotartamEgyseg; //30 perc
+    public Termek termek;
+    public string irany;
+    public Terminal terminal;
+
+    public TerminalBeosztas() { }
 
 	public TerminalBeosztas(DateTime _idopont, int _idotartamEgyseg, Termek _termek, string _irany, Terminal _terminal)
 	{

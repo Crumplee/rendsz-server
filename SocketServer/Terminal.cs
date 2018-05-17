@@ -2,8 +2,10 @@
 
 public class Terminal
 {
-    string azonosito;
-    bool hutott;
+    public string azonosito;
+    public bool hutott;
+
+    public Terminal() { }
 
 	public Terminal(string _azonosito, bool _hutott)
 	{

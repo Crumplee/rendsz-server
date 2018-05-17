@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 public class Termek
 {
-    string megrendeloAzonosito;
-    string termekNev;
-    string kulsoVonalkod;
-    string tipus;
-    DateTime beIdopont;
-    DateTime kiIdopont;
-    int mennyiseg;
-    List<Raklap> raklapok = new List<Raklap>();
+    public string megrendeloAzonosito;
+    public string termekNev;
+    public string kulsoVonalkod;
+    public string tipus;
+    public DateTime beIdopont;
+    public DateTime kiIdopont;
+    public int mennyiseg;
+    public List<Raklap> raklapok = new List<Raklap>();
 
 
     public void setMegrendeloAzonosito(string azon)
@@ -79,6 +79,7 @@ public class Termek
         return raklapok;
     }
 
+    public Termek() { }
 
     public Termek(  string _megrendeloAzonosito,
                     string _termekNev,

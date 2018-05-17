@@ -34,6 +34,8 @@ public class Muszakvezeto: Dolgozo
 
         string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "addMunkarend" + " - " + ujmunkarend.toLog();
         Logger.Instance().logs.Add(log);
+
+        SzerverKontroller.munkarendek.munkarendek.Clear();
     }
 
     public override CommObject getTerminalBeosztasTermekDatumTerminalSzerint(CommObject.termekMozgatasLekerdezesStruct termekMozgatasAdatok)

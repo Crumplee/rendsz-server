@@ -6,9 +6,9 @@ public class Raktar
 {
     int raklaphelySzam;
     string nev, cim, azonosito;
-    List<Termek> termekek = new List<Termek>();
-    List<Raklaphely> raklapHelyek = new List<Raklaphely>();
-    List<Terminal> terminalok = new List<Terminal>();
+    public List<Termek> termekek = new List<Termek>();
+    public List<Raklaphely> raklapHelyek = new List<Raklaphely>();
+    public List<Terminal> terminalok = new List<Terminal>();
     
 
 	public Raktar(string _nev, string _cim, string _azonosito)
@@ -77,8 +77,12 @@ public class Raktar
 
     public void behozandoTermekRogzitese(Termek ujTermek, List<string> raklaphelyek)
     {
+        termekek = Fajlkezelo.Instance().loadTermekek();
+
         termekek.Add(ujTermek);
         raklaphelyLetrehozasa(raklaphelyek, ujTermek.getRaklapok());
+
+        Fajlkezelo.Instance().saveTermekek(termekek);
     }
 
     public void raklaphelyLetrehozasa(List<string> _raklaphelyek, List<Raklap> raklapok)
@@ -91,7 +95,7 @@ public class Raktar
 
     public List<Termek> getTermekLista()
     {
-        return termekek;
+        return Fajlkezelo.Instance().loadTermekek();
     }
 
     public Terminal getTerminal(string azonosito)
@@ -109,7 +113,7 @@ public class Raktar
 
     public Termek getTermek(string kulsoVonalkod)
     {
-        foreach (Termek t in termekek)
+        foreach (Termek t in Fajlkezelo.Instance().loadTermekek())
         {
             if (t.getKulsovonalkod() == kulsoVonalkod)
             {

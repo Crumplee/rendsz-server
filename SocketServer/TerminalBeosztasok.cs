@@ -13,8 +13,8 @@ public class TerminalBeosztasok
 
     public void terminalBeosztasLetrehozasa(TerminalBeosztas tb)
     {
+
         terminalBeosztasok.Add(tb);
-        Console.WriteLine(tb.getTerminal().getAzonosito() + "terminalhoz terminalbeosztas jott letre");
     }
 
     public List<TerminalBeosztas> getTerminalBeosztasokDatumSzerint(DateTime idopont)

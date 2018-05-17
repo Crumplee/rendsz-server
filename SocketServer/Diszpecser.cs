@@ -47,19 +47,17 @@ public class Diszpecser: Dolgozo
                                         adatok.raklaphelyek);
 
         SzerverKontroller.raktar.behozandoTermekRogzitese(ujTermek, adatok.raklaphelyek);
-        
+                
         string log = DateTime.Now.ToString() +" - " + getAzonosito() + " - " + "termekFelvitel" + " - " + ujTermek.toLog();
         Logger.Instance().logs.Add(log);
+
+        SzerverKontroller.raktar.termekek.Clear();
     }
 
     public override void terminalBeosztasLetrehozasa(CommObject.terminalBeosztasAdatokStruct terminalBeosztas)
     {
         Terminal terminal = SzerverKontroller.raktar.getTerminal(terminalBeosztas.terminalAzonosito);
         Termek termek = SzerverKontroller.raktar.getTermek(terminalBeosztas.termekAzonosito);
-        /*
-        Console.WriteLine(terminal.getAzonosito());
-        Console.WriteLine(termek.getKulsovonalkod());
-        */
 
         TerminalBeosztas tb = new TerminalBeosztas(DateTime.Parse(terminalBeosztas.idopont),
                                                     terminalBeosztas.idotartamEgyseg,

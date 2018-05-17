@@ -2,15 +2,17 @@
 
 public class Munkarend
 {
-    string dolgozoAzonosito;
-    DateTime datum;
-    int muszakSorszam;
+    public string dolgozoAzonosito;
+    public DateTime datum;
+    public int muszakSorszam;
 	public Munkarend(string _dolgozoAzonosito, DateTime _datum, int _muszakSorszam)
 	{
         dolgozoAzonosito = _dolgozoAzonosito;
         datum = _datum;
         muszakSorszam = _muszakSorszam;
 	}
+
+    public Munkarend() { }
 
     public string getDolgozoAzonosito()
     {

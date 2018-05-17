@@ -2,10 +2,10 @@
 
 public class Raklap
 {
-    string belsoVonalkod, raklaphelyAzonosito;
-    string epsegBe, epsegKi;
-    int mozgatasSzama;
-    bool raktarban;
+    public string belsoVonalkod, raklaphelyAzonosito;
+    public string epsegBe, epsegKi;
+    public int mozgatasSzama;
+    public bool raktarban;
 
     public string getBelsoVonalkod()
     {
@@ -16,6 +16,8 @@ public class Raklap
     {
         return belsoVonalkod + " | " + raklaphelyAzonosito;
     }
+
+    public Raklap() { }
 
 	public Raklap(string _belsoVonalkod, string _raklaphelyAzonosito,
                     string _epsegBe, string _epsegKi, int _mozgatasSzama, bool _raktarban)
