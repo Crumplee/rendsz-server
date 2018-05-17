@@ -27,11 +27,10 @@ public class Fajlkezelo
     public void saveTermekek(List<Termek> termekek)
     {
         XmlSerializer xmlSer = new XmlSerializer(typeof(List<Termek>));
-        Stream stream = File.OpenWrite("termekeklista.xml");
+        Stream stream = File.Open("termekeklista.xml", FileMode.Create);
 
         xmlSer.Serialize(stream, termekek);
         stream.Close();
-        
     }
 
     public List<Termek> loadTermekek()
@@ -50,7 +49,7 @@ public class Fajlkezelo
     public void saveMunkarendek(List<Munkarend> munkarendek)
     {
         XmlSerializer xmlSer = new XmlSerializer(typeof(List<Munkarend>));
-        Stream stream = File.OpenWrite("munkarendeklista.xml");
+        Stream stream = File.Open("munkarendeklista.xml", FileMode.Create);
 
         xmlSer.Serialize(stream, munkarendek);
         stream.Close();
@@ -71,8 +70,9 @@ public class Fajlkezelo
 
     public void saveTerminalBeosztasok(List<TerminalBeosztas> terminalbeosztasok)
     {
+        Console.WriteLine("terminalb count " + terminalbeosztasok.Count);
         XmlSerializer xmlSer = new XmlSerializer(typeof(List<TerminalBeosztas>));
-        Stream stream = File.OpenWrite("terminalbeosztasoklista.xml");
+        Stream stream = File.Open("terminalbeosztasoklista.xml", FileMode.Create);
 
         xmlSer.Serialize(stream, terminalbeosztasok);
         stream.Close();
@@ -93,7 +93,7 @@ public class Fajlkezelo
     public void saveDolgozok(List<Dolgozo> dolgozok)
     {
         XmlSerializer xmlSer = new XmlSerializer(typeof(List<Dolgozo>));
-        Stream stream = File.OpenWrite("dolgozoklista.xml");
+        Stream stream = File.Open("dolgozoklista.xml", FileMode.Create);
 
         xmlSer.Serialize(stream, dolgozok);
         stream.Close();
@@ -124,7 +124,7 @@ public class Fajlkezelo
     }    public void saveRaklaphelyek(List<Raklaphely> raklaphelyek)
     {
         XmlSerializer xmlSer = new XmlSerializer(typeof(List<Raklaphely>));
-        Stream stream = File.OpenWrite("terminaloklista.xml");
+        Stream stream = File.Open("raklaphelyeklista.xml", FileMode.Create);
 
         xmlSer.Serialize(stream, raklaphelyek);
         stream.Close();

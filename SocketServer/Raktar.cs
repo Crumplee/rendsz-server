@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Communication;
+using System.Linq;
+using System.IO;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 
 public class Raktar
 {
@@ -29,7 +33,8 @@ public class Raktar
             raklapHelyek.Add(new Raklaphely(azon, true));
         }
         
-
+        */
+        /*
         for (int i = 0; i < 5; ++i)
         {
             string azon = "HT" + (i + 1);
@@ -41,9 +46,15 @@ public class Raktar
             string azon = "NHT" + (i + 1);
             terminalok.Add(new Terminal(azon, false));
         }
-        
-        Fajlkezelo.Instance().saveasd(terminalok);
+
+        XmlSerializer xmlSer = new XmlSerializer(typeof(List<Terminal>));
+        Stream stream = File.Open("terminaloklista.xml", FileMode.Create);
+
+        xmlSer.Serialize(stream, terminalok);
+        stream.Close();
         */
+        //Fajlkezelo.Instance().saveasd(terminalok);
+
         /*
         List<string> raklapokk = new List<string>();
         raklapokk.Add("H1");
@@ -163,9 +174,27 @@ public class Raktar
 
     public void termekTorles(Termek t)
     {
+        int idx;
+        
         termekek = Fajlkezelo.Instance().loadTermekek();
-        termekek.Remove(t);
+        raklapHelyek = Fajlkezelo.Instance().loadRaklaphelyek();
+
+        idx = termekek.FindIndex(termek => termek.getKulsovonalkod() == t.getKulsovonalkod());
+
+        foreach(Raklaphely rh in raklapHelyek)
+        {
+            if (termekek[idx].raklapok.Exists(tr => tr.belsoVonalkod == rh.raklapAzonosito))
+            {
+                rh.raklapAzonosito = null;
+            }
+        }
+        Fajlkezelo.Instance().saveRaklaphelyek(raklapHelyek);
+        raklapHelyek.Clear();
+
+        termekek.RemoveAt(idx);
+        
         Fajlkezelo.Instance().saveTermekek(termekek);
+
         termekek.Clear();
     }
 

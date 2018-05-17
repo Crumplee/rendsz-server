@@ -49,7 +49,9 @@ public class Dolgozok
             }
         }
         dolgozok = Fajlkezelo.Instance().loadDolgozok();
-        dolgozok.Remove(torlendo);
+
+        int idx = dolgozok.FindIndex(dolgozo => dolgozo.azonosito == azonosito);
+        dolgozok.RemoveAt(idx);
         Fajlkezelo.Instance().saveDolgozok(dolgozok);
         dolgozok.Clear();
     }

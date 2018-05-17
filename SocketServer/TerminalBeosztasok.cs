@@ -14,6 +14,8 @@ public class TerminalBeosztasok
     public void terminalBeosztasLetrehozasa(TerminalBeosztas tb)
     {
         terminalBeosztasok = Fajlkezelo.Instance().loadTerminalBeosztasok();
+        Console.WriteLine("torold: " + "jo-e a load");
+
         terminalBeosztasok.Add(tb);
         Fajlkezelo.Instance().saveTerminalBeosztasok(terminalBeosztasok);
     }
@@ -98,7 +100,8 @@ public class TerminalBeosztasok
         if (tb_tmp != null)
         {
             terminalBeosztasok = Fajlkezelo.Instance().loadTerminalBeosztasok();
-            terminalBeosztasok.Remove(tb_tmp);
+            int idx = terminalBeosztasok.FindIndex(tb => tb.termek.kulsoVonalkod == tb_tmp.termek.kulsoVonalkod && tb.irany == tb_tmp.irany);
+            terminalBeosztasok.RemoveAt(idx);
             Fajlkezelo.Instance().saveTerminalBeosztasok(terminalBeosztasok);
             terminalBeosztasok.Clear();
         }
