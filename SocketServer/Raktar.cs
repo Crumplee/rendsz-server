@@ -178,13 +178,10 @@ public class Raktar
         //kulsovonkod
         if (szurok.getKulsovonalkod() != null)
         {
-           // Console.WriteLine("szuro: " + szurok.getKulsovonalkod());
             foreach (Termek t in termekekLista)
             {
-                //Console.WriteLine("pl: " + t.getKulsovonalkod());
                 if (szurok.getKulsovonalkod() == t.getKulsovonalkod())
                 {
-                    //Console.WriteLine("bent van");
                     termekekLista_tmp.Add(t);
                 }
             }

@@ -114,6 +114,9 @@ public class SzerverKontroller
             case "termekSzurese":
                 response = user.termekeSzurtListazasa(request.termekAdatok);
                 break;
+            case "logokListazasa":
+                response.lista = user.logokListazasa();
+                break;
             default:
                 break;
         }

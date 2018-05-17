@@ -41,4 +41,13 @@ public class TerminalBeosztas
     {
         return irany;
     }
+
+    public string toLog()
+    {
+        string log = "";
+
+        log += terminal.getAzonosito() + " - " + idopont.ToString() + " - " + idotartamEgyseg.ToString() + " - " + termek.getKulsovonalkod()
+            + " - " + irany;
+        return log;
+    }
 }

@@ -13,6 +13,25 @@ public class Dolgozo
         jogosultsag = _jogosultsag;
 	}
 
+    public void setNev(string _nev)
+    {
+        nev = _nev;
+    }
+
+    public void setJogosultsag(string jog)
+    {
+        jogosultsag = jog;
+    }
+
+    public string toLog()
+    {
+        string log = "";
+
+        log += azonosito + " - " + nev + " - " + jogosultsag;
+
+        return log;
+    }
+
     public string getAzonosito()
     {
         return azonosito;
@@ -34,10 +53,7 @@ public class Dolgozo
     {
         return nev;
     }
-
-    public virtual void pempo() {
-        Console.WriteLine("alma");
-    }
+    
 
     public override string ToString()
     {
@@ -144,5 +160,10 @@ public class Dolgozo
     public virtual CommObject termekeSzurtListazasa(CommObject.termekAdatokStruct adatok)
     {
         return new CommObject();
+    }
+
+    public virtual List<string> logokListazasa()
+    {
+        return new List<string>();
     }
 }

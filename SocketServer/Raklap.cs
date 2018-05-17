@@ -49,4 +49,14 @@ public class Raklap
     {
         epsegKi = e;
     }
+
+    public string toLog()
+    {
+        string log = "";
+
+        log += belsoVonalkod + " - " + raklaphelyAzonosito + " - " + epsegBe + " - " + epsegKi + " - " + mozgatasSzama.ToString() + " - "
+            + raktarban.ToString();
+
+        return log;
+    }
 }

@@ -26,4 +26,11 @@ public class Munkarend
     {
         return muszakSorszam;
     }
+
+    public string toLog()
+    {
+        string log = "";
+        log += dolgozoAzonosito + " - " + datum.ToString() + " - " + muszakSorszam.ToString();
+        return log;
+    }
 }

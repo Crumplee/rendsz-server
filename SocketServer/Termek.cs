@@ -129,4 +129,20 @@ public class Termek
         }
         return null;
     }
+
+    public string toLog()
+    {
+        string log = "";
+
+        log += megrendeloAzonosito + "-" + termekNev + "-" + kulsoVonalkod + "-" + tipus + "-" + beIdopont.ToString() + "-"
+            + kiIdopont.ToString() + "-" + mennyiseg.ToString();
+
+        foreach (Raklap r in raklapok)
+        {
+            log += " | " + r.toLog();
+        }
+
+
+        return log;
+    }
 }

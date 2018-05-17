@@ -47,15 +47,19 @@ public class Diszpecser: Dolgozo
                                         adatok.raklaphelyek);
 
         SzerverKontroller.raktar.behozandoTermekRogzitese(ujTermek, adatok.raklaphelyek);
+        
+        string log = DateTime.Now.ToString() +" - " + getAzonosito() + " - " + "termekFelvitel" + " - " + ujTermek.toLog();
+        Logger.Instance().logs.Add(log);
     }
 
     public override void terminalBeosztasLetrehozasa(CommObject.terminalBeosztasAdatokStruct terminalBeosztas)
     {
         Terminal terminal = SzerverKontroller.raktar.getTerminal(terminalBeosztas.terminalAzonosito);
         Termek termek = SzerverKontroller.raktar.getTermek(terminalBeosztas.termekAzonosito);
-
+        /*
         Console.WriteLine(terminal.getAzonosito());
         Console.WriteLine(termek.getKulsovonalkod());
+        */
 
         TerminalBeosztas tb = new TerminalBeosztas(DateTime.Parse(terminalBeosztas.idopont),
                                                     terminalBeosztas.idotartamEgyseg,
@@ -65,6 +69,9 @@ public class Diszpecser: Dolgozo
             );
 
         SzerverKontroller.terminalBeosztasok.terminalBeosztasLetrehozasa(tb);
+
+        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "terminalBeosztasLetrehozas" + " - " + tb.toLog();
+        Logger.Instance().logs.Add(log);
     }
 
     public override CommObject getTerminalBeosztasok(CommObject.terminalBeosztasLekerdezesStruct terminalBeosztasLekerdezes)
@@ -72,7 +79,7 @@ public class Diszpecser: Dolgozo
         CommObject toResponse = new CommObject();
         List<TerminalBeosztas> terminalbeosztasok = new List<TerminalBeosztas>();
 
-        Console.WriteLine(terminalBeosztasLekerdezes.tipus + " " + terminalBeosztasLekerdezes.idopont + " " + terminalBeosztasLekerdezes.hutott);
+        //Console.WriteLine(terminalBeosztasLekerdezes.tipus + " " + terminalBeosztasLekerdezes.idopont + " " + terminalBeosztasLekerdezes.hutott);
 
         switch (terminalBeosztasLekerdezes.tipus)
         {
@@ -85,7 +92,7 @@ public class Diszpecser: Dolgozo
             case "datumEsHutottseg":
                 terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokDatumEsTipusSzerint(DateTime.Parse(terminalBeosztasLekerdezes.idopont),
                                                                                                                     terminalBeosztasLekerdezes.hutott);
-                Console.WriteLine("terminalbeosztasok szama: " + terminalbeosztasok.Count);
+                //Console.WriteLine("terminalbeosztasok szama: " + terminalbeosztasok.Count);
                 break;
             default:
                 break;
@@ -136,14 +143,22 @@ public class Diszpecser: Dolgozo
             SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito, "ki");
         }
 
+        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekModositas" + " - " + eredetiTermek.toLog();
+        Logger.Instance().logs.Add(log);
+
     }
 
     public override void termekTorles(string termekAzonosito)
     {
         Termek t = SzerverKontroller.raktar.getTermek(termekAzonosito);
+
+        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekTorles" + " - " + t.getKulsovonalkod();
+        Logger.Instance().logs.Add(log);
+
         SzerverKontroller.raktar.termekTorles(t);
         SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito, "be");
         SzerverKontroller.terminalBeosztasok.terminalBeosztasTorles(termekAzonosito, "ki");
+
     }
 
     public override CommObject termekeSzurtListazasa(CommObject.termekAdatokStruct adatok)

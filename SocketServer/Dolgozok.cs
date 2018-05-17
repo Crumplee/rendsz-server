@@ -62,7 +62,14 @@ public class Dolgozok
 
     public void modifyFelhasznalo(Dolgozo dolgozo)
     {
-        deleteFelhasznalo(dolgozo.getAzonosito());
-        addFelhasznalo(dolgozo);
+        for (int i = 0; i < dolgozok.Count; ++i)
+        {
+            if (dolgozok[i].getAzonosito() == dolgozo.getAzonosito())
+            {
+                dolgozok[i].setNev(dolgozo.getNev());
+                dolgozok[i].setJogosultsag(dolgozo.getJogosultsag());
+                break;
+            }
+        }
     }
 }

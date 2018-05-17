@@ -31,6 +31,9 @@ public class Muszakvezeto: Dolgozo
     {
         Munkarend ujmunkarend = new Munkarend(adatok.dolgozoAzonosito, adatok.datum, adatok.muszakSorszam);
         SzerverKontroller.munkarendek.addMunkarend(ujmunkarend);
+
+        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "addMunkarend" + " - " + ujmunkarend.toLog();
+        Logger.Instance().logs.Add(log);
     }
 
     public override CommObject getTerminalBeosztasTermekDatumTerminalSzerint(CommObject.termekMozgatasLekerdezesStruct termekMozgatasAdatok)
@@ -64,6 +67,10 @@ public class Muszakvezeto: Dolgozo
         }
 
         SzerverKontroller.raktar.termekBehozatal(termek, raklapok, raktarban, epseg);
+
+        Termek t = SzerverKontroller.raktar.getTermek(azonosito);
+        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekBehozatal" + " - " + t.toLog();
+        Logger.Instance().logs.Add(log);
     }
 
     public override void termekKivitel(string termek, List<CommObject.mozgoRaklapAdatokStruct> mozgoRaklapAdatok)
@@ -78,6 +85,10 @@ public class Muszakvezeto: Dolgozo
         }
 
         SzerverKontroller.raktar.termekKivitel(termek, raklapok, epseg);
+
+        Termek t = SzerverKontroller.raktar.getTermek(azonosito);
+        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekKivitel" + " - " + t.toLog();
+        Logger.Instance().logs.Add(log);
     }
 
     public override CommObject munkarendekLekerdezes()
