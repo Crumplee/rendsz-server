@@ -19,6 +19,8 @@ public class Adminisztrator: Dolgozo
         string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "addFelhasznalo" + " - " + ujDolgozo.toLog();
         Logger.Instance().logs.Add(log);
 
+        SzerverKontroller.dolgozok.dolgozok.Clear();
+
     }
 
     public override CommObject getDolgozok()
@@ -50,6 +52,8 @@ public class Adminisztrator: Dolgozo
 
         string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "addFelhasznalo" + " - " + dolgozo.toLog();
         Logger.Instance().logs.Add(log);
+
+        SzerverKontroller.dolgozok.dolgozok.Clear();
     }
 
     public override List<string> logokListazasa()

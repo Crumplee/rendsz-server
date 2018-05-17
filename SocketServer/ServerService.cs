@@ -24,13 +24,16 @@ namespace SocketServer
         }
         public async void Run()
         {
+            /*
             //init, töröld majd
             SzerverKontroller.dolgozok.init();
+            
             List<string> raklapokk = new List<string>();
             raklapokk.Add("H1");
             Terminal tm = new Terminal("HT1", true);
             Termek tk = new Termek("asd", "lol", "kek", "H", DateTime.Parse("2000-01-01"), DateTime.Parse("2010-01-01"), 1, raklapokk);
             SzerverKontroller.terminalBeosztasok.terminalBeosztasLetrehozasa(new TerminalBeosztas(DateTime.Parse("2000-01-01"), 1, tk, "be", tm));
+            */
 
             TcpListener listener = new TcpListener(this.ipAddress, this.port);
             listener.Start();

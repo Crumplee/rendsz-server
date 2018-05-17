@@ -2,9 +2,11 @@
 
 public class Raklaphely
 {
-    string azonosito;
-    string raklapAzonosito = null;
-    bool hutott;
+    public string azonosito;
+    public string raklapAzonosito = null;
+    public bool hutott;
+
+    public Raklaphely() { }
 
     public string getAzonosito()
     {

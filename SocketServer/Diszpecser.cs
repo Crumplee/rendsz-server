@@ -45,6 +45,7 @@ public class Diszpecser: Dolgozo
                                         DateTime.Parse(adatok.kiIdopont),
                                         adatok.mennyiseg,
                                         adatok.raklaphelyek);
+        
 
         SzerverKontroller.raktar.behozandoTermekRogzitese(ujTermek, adatok.raklaphelyek);
                 
@@ -70,6 +71,8 @@ public class Diszpecser: Dolgozo
 
         string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "terminalBeosztasLetrehozas" + " - " + tb.toLog();
         Logger.Instance().logs.Add(log);
+
+        SzerverKontroller.terminalBeosztasok.terminalBeosztasok.Clear();
     }
 
     public override CommObject getTerminalBeosztasok(CommObject.terminalBeosztasLekerdezesStruct terminalBeosztasLekerdezes)
@@ -143,6 +146,8 @@ public class Diszpecser: Dolgozo
 
         string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekModositas" + " - " + eredetiTermek.toLog();
         Logger.Instance().logs.Add(log);
+
+        SzerverKontroller.raktar.termekek.Clear();
 
     }
 

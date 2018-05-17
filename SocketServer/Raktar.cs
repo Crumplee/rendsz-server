@@ -16,6 +16,7 @@ public class Raktar
         nev = _nev;
         cim = _cim;
         azonosito = _azonosito;
+        /*
         for (int i = 0; i < 5; ++i)
         {
             string azon = "NH" + (i+1);
@@ -27,21 +28,23 @@ public class Raktar
             string azon = "H" + (i+1);
             raklapHelyek.Add(new Raklaphely(azon, true));
         }
+        
 
-        raklaphelySzam = raklapHelyek.Count;
-
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 5; ++i)
         {
             string azon = "HT" + (i + 1);
             terminalok.Add(new Terminal(azon, true));
         }
 
-        for (int i = 0; i < 2; ++i)
+        for (int i = 0; i < 5; ++i)
         {
             string azon = "NHT" + (i + 1);
             terminalok.Add(new Terminal(azon, false));
         }
-
+        
+        Fajlkezelo.Instance().saveasd(terminalok);
+        */
+        /*
         List<string> raklapokk = new List<string>();
         raklapokk.Add("H1");
         termekek.Add(new Termek("asd", "lol", "kek", "H", DateTime.Parse("2000-01-01"), DateTime.Parse("2010-01-01"), 1, raklapokk));
@@ -54,11 +57,12 @@ public class Raktar
 
         raklapokk.Add("HT1");
         termekek.Add(new Termek("asd2", "lol2", "kek2", "NH", DateTime.Parse("2004-01-01"), DateTime.Parse("2000-01-01"), 1, raklapokk));
-        raklapokk.Clear();
+        raklapokk.Clear();*/
     }
 
     public List<string> getSzabadRaklaphelyekTipusSzerint(bool hutott)
     {
+        raklapHelyek = Fajlkezelo.Instance().loadRaklaphelyek();
         List<string> lista = new List<string>();
         if (hutott)
         {
@@ -71,13 +75,15 @@ public class Raktar
             if (!rhely.getHutott() && rhely.szabadE())
                 lista.Add(rhely.getAzonosito());
         });
-
+        raklapHelyek.Clear();
         return lista;
     }
 
     public void behozandoTermekRogzitese(Termek ujTermek, List<string> raklaphelyek)
     {
-        termekek = Fajlkezelo.Instance().loadTermekek();
+
+        //itt ez
+        termekek = Fajlkezelo.Instance().loadTermekek();       
 
         termekek.Add(ujTermek);
         raklaphelyLetrehozasa(raklaphelyek, ujTermek.getRaklapok());
@@ -87,10 +93,13 @@ public class Raktar
 
     public void raklaphelyLetrehozasa(List<string> _raklaphelyek, List<Raklap> raklapok)
     {
+        raklapHelyek = Fajlkezelo.Instance().loadRaklaphelyek();
         for (int i = 0; i < _raklaphelyek.Count; ++i)
         {
             raklapHelyek.Find(hely => hely.getAzonosito() == _raklaphelyek[i]).setRaklapAzonosito(raklapok[i].getBelsoVonalkod());
         }
+        Fajlkezelo.Instance().saveRaklaphelyek(raklapHelyek);
+        raklapHelyek.Clear();
     }
 
     public List<Termek> getTermekLista()
@@ -100,7 +109,7 @@ public class Raktar
 
     public Terminal getTerminal(string azonosito)
     {
-        foreach (Terminal t in terminalok)
+        foreach (Terminal t in Fajlkezelo.Instance().loadTerminalok())
         {
             if (t.getAzonosito() == azonosito)
             {
@@ -154,11 +163,15 @@ public class Raktar
 
     public void termekTorles(Termek t)
     {
+        termekek = Fajlkezelo.Instance().loadTermekek();
         termekek.Remove(t);
+        Fajlkezelo.Instance().saveTermekek(termekek);
+        termekek.Clear();
     }
 
     public void termekModositas(string termekAzonosito, Termek termek)
     {
+        termekek = Fajlkezelo.Instance().loadTermekek();
         for (int i = 0; i < termekek.Count; ++i)
         {
             if (termekek[i].getKulsovonalkod() == termekAzonosito)
@@ -171,12 +184,12 @@ public class Raktar
                 break;
             }
         }
-        
+        Fajlkezelo.Instance().saveTermekek(termekek);
     }
 
     public List<Termek> getTermekLista(Termek szurok)
     {
-        List<Termek> termekekLista = termekek;
+        List<Termek> termekekLista = Fajlkezelo.Instance().loadTermekek();
         List<Termek> termekekLista_tmp = new List<Termek>();
 
         //kulsovonkod

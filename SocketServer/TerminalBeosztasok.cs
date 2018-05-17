@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class TerminalBeosztasok
 {
-    List<TerminalBeosztas> terminalBeosztasok = new List<TerminalBeosztas>();
+    public List<TerminalBeosztas> terminalBeosztasok = new List<TerminalBeosztas>();
 
 
 	public TerminalBeosztasok()
@@ -13,15 +13,16 @@ public class TerminalBeosztasok
 
     public void terminalBeosztasLetrehozasa(TerminalBeosztas tb)
     {
-
+        terminalBeosztasok = Fajlkezelo.Instance().loadTerminalBeosztasok();
         terminalBeosztasok.Add(tb);
+        Fajlkezelo.Instance().saveTerminalBeosztasok(terminalBeosztasok);
     }
 
     public List<TerminalBeosztas> getTerminalBeosztasokDatumSzerint(DateTime idopont)
     {
         List<TerminalBeosztas> terminalBeosztasok_tmp = new List<TerminalBeosztas>();
 
-        foreach (TerminalBeosztas tb in terminalBeosztasok)
+        foreach (TerminalBeosztas tb in Fajlkezelo.Instance().loadTerminalBeosztasok())
         {
             DateTime tb_idopont = tb.getIdopont();
             if (tb_idopont.Year == idopont.Year && tb_idopont.Month == idopont.Month && tb_idopont.Day == idopont.Day)
@@ -37,7 +38,7 @@ public class TerminalBeosztasok
     {
         List<TerminalBeosztas> terminalBeosztasok_tmp = new List<TerminalBeosztas>();
 
-        foreach (TerminalBeosztas tb in terminalBeosztasok)
+        foreach (TerminalBeosztas tb in Fajlkezelo.Instance().loadTerminalBeosztasok())
         {
             DateTime tb_idopont = tb.getIdopont();
             if (tb_idopont.Year == idopont.Year && tb_idopont.Month == idopont.Month && tb_idopont.Day == idopont.Day)
@@ -57,7 +58,7 @@ public class TerminalBeosztasok
     {
         List<TerminalBeosztas> terminalBeosztasok_tmp = new List<TerminalBeosztas>();
 
-        foreach (TerminalBeosztas tb in terminalBeosztasok)
+        foreach (TerminalBeosztas tb in Fajlkezelo.Instance().loadTerminalBeosztasok())
         {
             if (tb.getTerminal().getAzonosito() == azonosito)
             {
@@ -70,7 +71,7 @@ public class TerminalBeosztasok
 
     public TerminalBeosztas getTerminalBeosztas(string termekA, DateTime idopont, string terminalA)
     {
-        foreach (TerminalBeosztas tb in terminalBeosztasok)
+        foreach (TerminalBeosztas tb in Fajlkezelo.Instance().loadTerminalBeosztasok())
         {
             if (tb.getTermek().getKulsovonalkod() == termekA && tb.getIdopont() == idopont && tb.getTerminal().getAzonosito() == terminalA)
             {
@@ -85,7 +86,7 @@ public class TerminalBeosztasok
         TerminalBeosztas tb_tmp = null;
 
         Console.WriteLine(termekAzon + ' ' + irany);
-        foreach (TerminalBeosztas tb in terminalBeosztasok)
+        foreach (TerminalBeosztas tb in Fajlkezelo.Instance().loadTerminalBeosztasok())
         {
             if (tb.getTermek().getKulsovonalkod() == termekAzon && tb.getIrany() == irany)
             {
@@ -96,7 +97,10 @@ public class TerminalBeosztasok
 
         if (tb_tmp != null)
         {
+            terminalBeosztasok = Fajlkezelo.Instance().loadTerminalBeosztasok();
             terminalBeosztasok.Remove(tb_tmp);
+            Fajlkezelo.Instance().saveTerminalBeosztasok(terminalBeosztasok);
+            terminalBeosztasok.Clear();
         }
 
     }

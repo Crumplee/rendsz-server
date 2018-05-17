@@ -82,11 +82,65 @@ public class Fajlkezelo
         List<TerminalBeosztas> terminalbeosztasok = new List<TerminalBeosztas>();
 
         XmlSerializer deserializer = new XmlSerializer(typeof(List<TerminalBeosztas>));
-        TextReader reader = new StreamReader("munkarendeklista.xml");
+        TextReader reader = new StreamReader("terminalbeosztasoklista.xml");
         object obj = deserializer.Deserialize(reader);
         terminalbeosztasok = (List<TerminalBeosztas>)obj;
         reader.Close();
 
         return terminalbeosztasok;
-    }
+    }
+
+    public void saveDolgozok(List<Dolgozo> dolgozok)
+    {
+        XmlSerializer xmlSer = new XmlSerializer(typeof(List<Dolgozo>));
+        Stream stream = File.OpenWrite("dolgozoklista.xml");
+
+        xmlSer.Serialize(stream, dolgozok);
+        stream.Close();
+    }
+
+    public List<Dolgozo> loadDolgozok()
+    {
+        List<Dolgozo> dolgozok = new List<Dolgozo>();
+
+        XmlSerializer deserializer = new XmlSerializer(typeof(List<Dolgozo>));
+        TextReader reader = new StreamReader("dolgozoklista.xml");
+        object obj = deserializer.Deserialize(reader);
+        dolgozok = (List<Dolgozo>)obj;
+        reader.Close();
+
+        return dolgozok;
+    }    public List<Raklaphely> loadRaklaphelyek()
+    {
+        List<Raklaphely> raklaphelyek = new List<Raklaphely>();
+
+        XmlSerializer deserializer = new XmlSerializer(typeof(List<Raklaphely>));
+        TextReader reader = new StreamReader("raklaphelyeklista.xml");
+        object obj = deserializer.Deserialize(reader);
+        raklaphelyek = (List<Raklaphely>)obj;
+        reader.Close();
+
+        return raklaphelyek;
+    }    public void saveRaklaphelyek(List<Raklaphely> raklaphelyek)
+    {
+        XmlSerializer xmlSer = new XmlSerializer(typeof(List<Raklaphely>));
+        Stream stream = File.OpenWrite("terminaloklista.xml");
+
+        xmlSer.Serialize(stream, raklaphelyek);
+        stream.Close();
+    }
+
+   
+     public List<Terminal> loadTerminalok()
+    {
+        List<Terminal> terminalok = new List<Terminal>();
+
+        XmlSerializer deserializer = new XmlSerializer(typeof(List<Terminal>));
+        TextReader reader = new StreamReader("terminaloklista.xml");
+        object obj = deserializer.Deserialize(reader);
+        terminalok = (List<Terminal>)obj;
+        reader.Close();
+
+        return terminalok;
+    }
 }

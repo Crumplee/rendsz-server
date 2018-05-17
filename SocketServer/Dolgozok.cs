@@ -3,20 +3,8 @@ using System.Collections.Generic;
 
 public class Dolgozok
 {
-    List<Dolgozo> dolgozok = new List<Dolgozo>();
-
-    //private static Dolgozok instance = new Dolgozok();
-    /*
-    public static Dolgozok Instance()
-    {        
-        if (instance == null)
-        {
-            //Console.WriteLine("létrehozzaa");
-            instance = new Dolgozok();
-        }
-        return instance;        
-    }*/
-
+    public List<Dolgozo> dolgozok = new List<Dolgozo>();
+    
 
     public Dolgozok()
 	{
@@ -34,16 +22,19 @@ public class Dolgozok
         tmp = new Dolgozo("raktaros", "123", "belezogep", "raktaros");
         dolgozok.Add(tmp);
 
+        Fajlkezelo.Instance().saveDolgozok(dolgozok);
     }
 
     public List<Dolgozo> getDolgozok()
     {
-        return dolgozok;
+        return Fajlkezelo.Instance().loadDolgozok();
     }
 
     public void addFelhasznalo(Dolgozo d)
     {
+        dolgozok = Fajlkezelo.Instance().loadDolgozok();
         dolgozok.Add(d);
+        Fajlkezelo.Instance().saveDolgozok(dolgozok);
     }
 
     public void deleteFelhasznalo(string azonosito)
@@ -57,11 +48,15 @@ public class Dolgozok
                 break;
             }
         }
+        dolgozok = Fajlkezelo.Instance().loadDolgozok();
         dolgozok.Remove(torlendo);
+        Fajlkezelo.Instance().saveDolgozok(dolgozok);
+        dolgozok.Clear();
     }
 
     public void modifyFelhasznalo(Dolgozo dolgozo)
     {
+        dolgozok = Fajlkezelo.Instance().loadDolgozok();
         for (int i = 0; i < dolgozok.Count; ++i)
         {
             if (dolgozok[i].getAzonosito() == dolgozo.getAzonosito())
@@ -71,5 +66,6 @@ public class Dolgozok
                 break;
             }
         }
+        Fajlkezelo.Instance().saveDolgozok(dolgozok);
     }
 }

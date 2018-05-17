@@ -3,7 +3,9 @@ using Communication;
 using System.Collections.Generic;
 public class Dolgozo
 {
-    protected string azonosito, vonalkod, nev, jogosultsag;
+    public string azonosito, vonalkod, nev, jogosultsag;
+
+    public Dolgozo() { }
 
 	public Dolgozo(string _azonosito, string _vonalkod, string _nev, string _jogosultsag)
 	{
