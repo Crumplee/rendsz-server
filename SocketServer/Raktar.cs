@@ -145,30 +145,36 @@ public class Raktar
 
     public void termekBehozatal(string azonosito, List<string> raklapok, List<bool> raktarban, List<string> epseg)
     {
-        Termek t = getTermek(azonosito);
+        termekek = Fajlkezelo.Instance().loadTermekek();
+
+        int idx = termekek.FindIndex(termek => termek.kulsoVonalkod == azonosito);
 
         for (int i = 0; i < raklapok.Count; ++i)
         {
-            Raklap r = t.getRaklap(raklapok[i]);
-            int idx = t.getRaklapok().IndexOf(r);
-            t.getRaklapok()[idx].setRaktarban(raktarban[i]);
-            t.getRaklapok()[idx].setEpsegBe(epseg[i]);
+            Raklap r = termekek[idx].getRaklap(raklapok[i]);
+            int idx2 = termekek[idx].getRaklapok().IndexOf(r);
+
+            termekek[idx].getRaklapok()[idx2].setRaktarban(raktarban[i]);
+            termekek[idx].getRaklapok()[idx2].setEpsegBe(epseg[i]);
         }
 
-        //Console.WriteLine("termekbehozatal check -- " + t.getRaklapok()[0].getEpsegBe());
+        Fajlkezelo.Instance().saveTermekek(termekek);
     }
 
     public void termekKivitel(string azonosito, List<string> raklapok, List<string> epseg)
     {
-        Termek t = getTermek(azonosito);
+        termekek = Fajlkezelo.Instance().loadTermekek();
+
+        int idx = termekek.FindIndex(termek => termek.kulsoVonalkod == azonosito);
+
 
         for (int i = 0; i < raklapok.Count; ++i)
         {
-            Raklap r = t.getRaklap(raklapok[i]);
-            int idx = t.getRaklapok().IndexOf(r);
-            t.getRaklapok()[idx].setEpsegKi(epseg[i]);
+            Raklap r = termekek[idx].getRaklap(raklapok[i]);
+            int idx2 = termekek[idx].getRaklapok().IndexOf(r);
+            termekek[idx].getRaklapok()[idx2].setEpsegKi(epseg[i]);
         }
-        termekTorles(t);
+        termekTorles(termekek[idx]);
 
     }
 

@@ -67,7 +67,6 @@ public class Diszpecser: Dolgozo
                                                     terminal
             );
 
-        Console.WriteLine("torold: " + tb.termek.kulsoVonalkod);
         SzerverKontroller.terminalBeosztasok.terminalBeosztasLetrehozasa(tb);
 
         string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "terminalBeosztasLetrehozas" + " - " + tb.toLog();

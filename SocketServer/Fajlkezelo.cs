@@ -70,7 +70,6 @@ public class Fajlkezelo
 
     public void saveTerminalBeosztasok(List<TerminalBeosztas> terminalbeosztasok)
     {
-        Console.WriteLine("terminalb count " + terminalbeosztasok.Count);
         XmlSerializer xmlSer = new XmlSerializer(typeof(List<TerminalBeosztas>));
         Stream stream = File.Open("terminalbeosztasoklista.xml", FileMode.Create);
 

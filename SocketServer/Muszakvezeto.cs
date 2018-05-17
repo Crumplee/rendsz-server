@@ -32,6 +32,8 @@ public class Muszakvezeto: Dolgozo
         Munkarend ujmunkarend = new Munkarend(adatok.dolgozoAzonosito, adatok.datum, adatok.muszakSorszam);
         SzerverKontroller.munkarendek.addMunkarend(ujmunkarend);
 
+       
+
         string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "addMunkarend" + " - " + ujmunkarend.toLog();
         Logger.Instance().logs.Add(log);
 
@@ -71,8 +73,8 @@ public class Muszakvezeto: Dolgozo
         SzerverKontroller.raktar.termekBehozatal(termek, raklapok, raktarban, epseg);
 
         Termek t = SzerverKontroller.raktar.getTermek(azonosito);
-        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekBehozatal" + " - " + t.toLog();
-        Logger.Instance().logs.Add(log);
+        //string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekBehozatal" + " - " + t.toLog();
+       // Logger.Instance().logs.Add(log);
     }
 
     public override void termekKivitel(string termek, List<CommObject.mozgoRaklapAdatokStruct> mozgoRaklapAdatok)
@@ -89,8 +91,8 @@ public class Muszakvezeto: Dolgozo
         SzerverKontroller.raktar.termekKivitel(termek, raklapok, epseg);
 
         Termek t = SzerverKontroller.raktar.getTermek(azonosito);
-        string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekKivitel" + " - " + t.toLog();
-        Logger.Instance().logs.Add(log);
+        //string log = DateTime.Now.ToString() + " - " + getAzonosito() + " - " + "termekKivitel" + " - " + t.toLog();
+        //Logger.Instance().logs.Add(log);
     }
 
     public override CommObject munkarendekLekerdezes()
@@ -127,6 +129,45 @@ public class Muszakvezeto: Dolgozo
             }
             toResponse.termekAdatokLista.Add(tmp);
         }
+        return toResponse;
+    }
+
+    public override CommObject getTerminalBeosztasok(CommObject.terminalBeosztasLekerdezesStruct terminalBeosztasLekerdezes)
+    {
+        CommObject toResponse = new CommObject();
+        List<TerminalBeosztas> terminalbeosztasok = new List<TerminalBeosztas>();
+
+        //Console.WriteLine(terminalBeosztasLekerdezes.tipus + " " + terminalBeosztasLekerdezes.idopont + " " + terminalBeosztasLekerdezes.hutott);
+
+        switch (terminalBeosztasLekerdezes.tipus)
+        {
+            case "datum":
+                terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokDatumSzerint(DateTime.Parse(terminalBeosztasLekerdezes.idopont));
+                break;
+            case "terminal":
+                terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokTerminalSzerint(terminalBeosztasLekerdezes.terminal);
+                break;
+            case "datumEsHutottseg":
+                terminalbeosztasok = SzerverKontroller.terminalBeosztasok.getTerminalBeosztasokDatumEsTipusSzerint(DateTime.Parse(terminalBeosztasLekerdezes.idopont),
+                                                                                                                    terminalBeosztasLekerdezes.hutott);
+                //Console.WriteLine("terminalbeosztasok szama: " + terminalbeosztasok.Count);
+                break;
+            default:
+                break;
+        }
+
+
+        foreach (TerminalBeosztas tb in terminalbeosztasok)
+        {
+            toResponse.terminalBeosztasAdatokLista.Add(new CommObject.terminalBeosztasAdatokStruct(tb.getIdopont().ToString(),
+                                                                                                    tb.getIdotartamEgyseg(),
+                                                                                                    tb.getTerminal().getHutott(),
+                                                                                                    tb.getIrany(),
+                                                                                                    tb.getTermek().getKulsovonalkod(),
+                                                                                                    tb.getTerminal().getAzonosito()
+            ));
+        }
+
         return toResponse;
     }
 }

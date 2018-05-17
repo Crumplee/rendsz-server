@@ -14,7 +14,6 @@ public class TerminalBeosztasok
     public void terminalBeosztasLetrehozasa(TerminalBeosztas tb)
     {
         terminalBeosztasok = Fajlkezelo.Instance().loadTerminalBeosztasok();
-        Console.WriteLine("torold: " + "jo-e a load");
 
         terminalBeosztasok.Add(tb);
         Fajlkezelo.Instance().saveTerminalBeosztasok(terminalBeosztasok);
@@ -87,7 +86,6 @@ public class TerminalBeosztasok
     {
         TerminalBeosztas tb_tmp = null;
 
-        Console.WriteLine(termekAzon + ' ' + irany);
         foreach (TerminalBeosztas tb in Fajlkezelo.Instance().loadTerminalBeosztasok())
         {
             if (tb.getTermek().getKulsovonalkod() == termekAzon && tb.getIrany() == irany)
